@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Projet SportSee
+<div align="center">
+<img src="src/assets/logo.svg" alt="SportSee"/>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## À propos du projet
 
-## Available Scripts
+SportSee est une startup dédiée au coaching sportif.
+En pleine croissance, l’entreprise va aujourd’hui lancer une nouvelle version de la page profil de l’utilisateur.
+Cette page va notamment permettre à l’utilisateur de suivre le nombre de sessions réalisées ainsi que le nombre de calories brûlées.
 
-In the project directory, you can run:
 
-### `npm start`
+## Fonctionnalités Principales
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Réalisation de la page profil utilisateur
+- Affichage des données de l'utilisateur (nombre de sessions, nombre de calories brûlées, temps d'activité) sous forme de graphiques
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Outils utilisés
+Projet réalisé avec React et D3.js
 
-### `npm test`
+<img src="public/react_icon.svg" alt="react icon" width="100" /> <img src="public/d3.svg" alt="D3" width="100" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lien Kanban : [Kanban](
+    https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Cloner le dépôt
+   ```sh
+   git clone
+    ```
+2. Installer les dépendances
+    ```sh
+    npm install
+    ```
+3. Lancer le serveur
+    ```sh
+    npm start
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Le site
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Vous pouvez également consulter le site live sur cette adresse : 
+<!-- [Kasa](https://kasa-gules-omega.vercel.app/) -->
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
+[kseniyamudrakovadev@gmail.com](kseniyamudrakovadev@gmail.com)
