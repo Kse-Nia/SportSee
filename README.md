@@ -35,13 +35,13 @@ Lien Kanban : [Kanban](
     ```
 3. Lancer le serveur
     ```sh
-    npm start
+    npm run dev
     ```
 
 ## Le site
 
 Vous pouvez également consulter le site live sur cette adresse : 
-<!-- [Kasa](https://kasa-gules-omega.vercel.app/) -->
+
 
 ## Contact
 [kseniyamudrakovadev@gmail.com](kseniyamudrakovadev@gmail.com)
