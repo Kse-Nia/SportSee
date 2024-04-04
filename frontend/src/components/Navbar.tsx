@@ -10,16 +10,24 @@ export default function Navbar() {
         <div className="header-links">
           <ul>
             <li>
-              <Link href="/" className="header-links-link">Accueil</Link>
+              <Link href="/" className="header-links-link">
+                Accueil
+              </Link>
             </li>
             <li>
-              <Link href="/account" className="header-links-link">Profil</Link>
+              <Link href="/account" className="header-links-link">
+                Profil
+              </Link>
             </li>
             <li>
-              <Link href="/parameters" className="header-links-link">Règlage</Link>
+              <Link href="/parameters" className="header-links-link">
+                Règlage
+              </Link>
             </li>
             <li>
-              <Link href="/community" className="header-links-link">Communauté</Link>
+              <Link href="/community" className="header-links-link">
+                Communauté
+              </Link>
             </li>
           </ul>
         </div>
