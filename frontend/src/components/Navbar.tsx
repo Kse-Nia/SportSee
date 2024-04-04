@@ -1,18 +1,29 @@
 import Link from "next/link";
-import Logo from "../assets/logo.svg";
 
 export default function Navbar() {
   return (
-    <>
-      <div className="logo-container">
-        <Logo />
-      </div>
-      <div className="nav-links">
-        <Link href="/">Accueil</Link>
-        <Link href="/account">Profil</Link>
-        <Link href="/parameters">Règlage</Link>
-        <Link href="/community">Communauté</Link>
-      </div>
-    </>
+    <header>
+      <nav className="header">
+        <div className="logo-container">
+          <img src="/assets/logo.svg" alt="SportSee logo" />
+        </div>
+        <div className="header-links">
+          <ul>
+            <li>
+              <Link href="/" className="header-links-link">Accueil</Link>
+            </li>
+            <li>
+              <Link href="/account" className="header-links-link">Profil</Link>
+            </li>
+            <li>
+              <Link href="/parameters" className="header-links-link">Règlage</Link>
+            </li>
+            <li>
+              <Link href="/community" className="header-links-link">Communauté</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 }
