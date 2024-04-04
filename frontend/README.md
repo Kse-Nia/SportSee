@@ -23,6 +23,10 @@ Projet réalisé avec React et D3.js
 Lien Kanban : [Kanban](
     https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)
 
+## Les indépendances
+
+NodeJS, NextJS, D3
+
 ## Installation
 
 1. Cloner le dépôt

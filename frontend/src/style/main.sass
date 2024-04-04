@@ -1,0 +1,49 @@
+@import "./_variables"
+@import "./_global"
+
+// Navbar
+.header
+    background-color: $dark-background
+    color: $background
+    padding: 1rem
+    text-align: center
+    display: flex
+    flex-direction: row
+    align-items: center
+    &-links
+        width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        width: 100%
+        margin-left: 1rem
+        ul
+            display: flex
+            justify-content: space-between
+            padding: 0
+            list-style: none
+        &-link
+            color: $background
+            text-decoration: none
+            font-size: 1.2rem
+            font-weight: 500
+            padding: 0.5rem
+            &:hover
+                color: $primary
+
+// Sidebar
+.container
+    height: 100vh
+    width: 117px
+    background-color: $dark-background
+    &_actvities
+        &-icon
+            background-color: $background
+            color: $primary
+            border-radius: 10px
+    &-copyright
+        transform: rotate(-90deg)
+        font-size: 12px
+        line-height: 24px
+        font-weight: 500
+        color: $background
