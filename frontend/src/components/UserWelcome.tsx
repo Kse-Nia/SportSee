@@ -4,12 +4,12 @@ interface UserWelcomeProps {
 
 export default function UserWelcome({ name }: UserWelcomeProps) {
   return (
-    <div>
-      <div className="welcome">
-        <span>Bonjour</span>
-        <span>{name}</span>
+    <div className="user_container">
+      <div className="user_container-welcome">
+        <span>Bonjour  </span>
+        <span className="user_container-name">{name}</span>
       </div>
-      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+      <p className="user_container-congrat">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </div>
   );
 }
