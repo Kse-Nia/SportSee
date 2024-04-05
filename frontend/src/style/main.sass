@@ -11,15 +11,15 @@
     flex-direction: row
     align-items: center
     &-links
+        background-color: orange
         width: 100%
         display: flex
         flex-direction: row
-        justify-content: space-between
+        justify-content: space-evenly
         width: 100%
         margin-left: 1rem
         ul
             display: flex
-            justify-content: space-between
             padding: 0
             list-style: none
         &-link
@@ -37,11 +37,22 @@
     width: 117px
     background-color: $dark-background
     &_actvities
+        min-height: 320px
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+        align-items: center
         &-icon
             background-color: $background
             color: $primary
             border-radius: 10px
+            width: 64px
+            height: 64px
+            display: flex
+            justify-content: center
+            align-items: center
     &-copyright
+        width: auto
         transform: rotate(-90deg)
         font-size: 12px
         line-height: 24px
