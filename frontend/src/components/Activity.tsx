@@ -1,6 +1,8 @@
-import React from "react";
+interface ActivityProps {
+  children: React.ReactNode;
+}
 
-function Activity() {
+const Activity: React.FC<ActivityProps> = ({ children }) => {
   return (
     <div className="activity">
       <div className="activity_container">
@@ -11,6 +13,6 @@ function Activity() {
       <div className="activity-data"></div>
     </div>
   );
-}
+};
 
 export default Activity;
