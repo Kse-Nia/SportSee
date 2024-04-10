@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import Link from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -7,27 +7,27 @@ export default function Navbar() {
         <div className="logo-container">
           <img src="/assets/logo.svg" alt="SportSee logo" />
         </div>
-        <div className="header-NavLinks">
+        <div className="header-links">
           <ul>
             <li>
-              <NavLink href="/" className="header-NavLinks-NavLink">
+              <Link href="/" className="header-links-link">
                 Accueil
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink href="/account" className="header-NavLinks-NavLink">
+              <Link href="/account" className="header-links-link">
                 Profil
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink href="/parameters" className="header-NavLinks-NavLink">
+              <Link href="/parameters" className="header-links-link">
                 Règlage
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink href="/community" className="header-NavLinks-NavLink">
+              <Link href="/community" className="header-links-link">
                 Communauté
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </div>

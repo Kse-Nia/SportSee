@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid red;
+}
+
+main {
+  font-family: Roboto;
+  border-box: box-sizing;
+}
+
+ul, li {
+  tex-decoration: none;
+  list-style: none;
+}
+
+.container {
+  display: flex;
+}
+
+.main {
+  min-width: 80vw;
+  flex: 2;
+  margin: 3em;
+  background-color: green;
+}
+
+.header {
+  background-color: #020203;
+  color: #FFFFFF;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.header-links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-left: 1rem;
+}
+.header-links ul {
+  display: flex;
+  padding: 0;
+  list-style: none;
+}
+.header-links-link {
+  display: flex;
+  justify-content: space-evenly;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+.header-links-link:hover {
+  color: #FF0101;
+}
+
+.side_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100vh;
+  width: 117px;
+  background-color: #020203;
+}
+.side_container_actvities {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.side_container_actvities-icon {
+  background-color: #FFFFFF;
+  color: #FF0101;
+  border-radius: 10px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.side_container-copyright {
+  align-self: flex-end;
+  width: auto;
+  transform: rotate(-90deg);
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.user_container {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: 500;
+}
+.user_container-welcome {
+  color: #000;
+  font-size: 48px;
+  line-height: 24px;
+  margin-bottom: 1%;
+}
+.user_container-name {
+  color: #FF0101;
+  font-size: 48px;
+  line-height: 24px;
+}
+.user_container-congrat {
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,90 @@
+@import "./_variables"
+@import "./_global"
+
+// Navbar
+.header
+    background-color: $dark-background
+    color: $background
+    padding: 1rem
+    text-align: center
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+    //align-items: center
+    &-links
+        width: 100%
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-evenly
+        width: 100%
+        margin-left: 1rem
+        ul
+            display: flex
+            padding: 0
+            list-style: none
+        &-link
+            display: flex
+            justify-content: space-evenly
+            color: $background
+            text-decoration: none
+            font-size: 1.2rem
+            font-weight: 500
+            padding: 0.5rem
+            &:hover
+                color: $primary
+
+// Sidebar
+.side_container
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    height: 100vh
+    width: 117px
+    background-color: $dark-background
+    &_actvities
+        min-height: 320px
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+        align-items: center
+        &-icon
+            background-color: $background
+            color: $primary
+            border-radius: 10px
+            width: 64px
+            height: 64px
+            display: flex
+            justify-content: center
+            align-items: center
+    &-copyright
+        align-self: flex-end
+        width: auto
+        transform: rotate(-90deg)
+        font-size: 12px
+        line-height: 24px
+        font-weight: 500
+        color: $background
+        white-space: nowrap
+
+// User Welcome message
+.user_container
+    display: flex
+    flex-direction: column
+
+    font-style: normal
+    font-weight: 500
+    &-welcome
+        color: #000
+        font-size: 48px
+        line-height: 24px
+        margin-bottom: 1%
+    &-name
+        color: #FF0101
+        font-size: 48px
+        line-height: 24px
+    &-congrat
+        color: #000
+        font-size: 18px
+        font-weight: 400
+        line-height: 24px
