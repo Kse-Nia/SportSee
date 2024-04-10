@@ -9,8 +9,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar />
-     {/*  <Sidebar /> */}
-      <main>{children}</main>
+      <div className="container">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="main">{children}</div>
+      </div>
     </>
   );
 };

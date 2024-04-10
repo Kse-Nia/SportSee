@@ -9,12 +9,13 @@
     text-align: center
     display: flex
     flex-direction: row
-    align-items: center
+    justify-content: space-evenly
+    //align-items: center
     &-links
-        background-color: orange
         width: 100%
         display: flex
         flex-direction: row
+        align-items: center
         justify-content: space-evenly
         width: 100%
         margin-left: 1rem
@@ -23,6 +24,8 @@
             padding: 0
             list-style: none
         &-link
+            display: flex
+            justify-content: space-evenly
             color: $background
             text-decoration: none
             font-size: 1.2rem
@@ -32,7 +35,10 @@
                 color: $primary
 
 // Sidebar
-.container
+.side_container
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
     height: 100vh
     width: 117px
     background-color: $dark-background
@@ -52,9 +58,33 @@
             justify-content: center
             align-items: center
     &-copyright
+        align-self: flex-end
         width: auto
         transform: rotate(-90deg)
         font-size: 12px
         line-height: 24px
         font-weight: 500
         color: $background
+        white-space: nowrap
+
+// User Welcome message
+.user_container
+    display: flex
+    flex-direction: column
+
+    font-style: normal
+    font-weight: 500
+    &-welcome
+        color: #000
+        font-size: 48px
+        line-height: 24px
+        margin-bottom: 1%
+    &-name
+        color: #FF0101
+        font-size: 48px
+        line-height: 24px
+    &-congrat
+        color: #000
+        font-size: 18px
+        font-weight: 400
+        line-height: 24px
