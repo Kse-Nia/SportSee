@@ -3,6 +3,13 @@ interface ActivityProps {
 }
 
 const Activity: React.FC<ActivityProps> = ({ children }) => {
+  const width = 928;
+  const height = 500;
+  const marginTop = 30;
+  const marginRight = 0;
+  const marginBottom = 30;
+  const marginLeft = 40;
+
   return (
     <div className="activity">
       <div className="activity_container">
