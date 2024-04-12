@@ -1,15 +1,17 @@
 interface UserWelcomeProps {
   userInfos: {
-    firstname: string;
+    firstName: string;
   };
 }
 
 export default function UserWelcome({ userInfos }: UserWelcomeProps) {
-    return (
+  console.log("userInfos:", userInfos);
+
+  return (
     <div className="user_container">
       <div className="user_container-welcome">
         <span>Bonjour </span>
-        <span className="user_container-name">{userInfos.firstname}</span>
+        <span className="user_container-name">{userInfos.firstName}</span>
       </div>
       <p className="user_container-congrat">
         Félicitation ! Vous avez explosé vos objectifs hier 👏

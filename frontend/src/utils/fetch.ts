@@ -1,22 +1,22 @@
-import "../../public/mockup.json";
+export async function fetchData(url: string, mockupData: string): Promise<any> {
+  let data = null;
 
-export async function fetchData<T>(
-  url: string,
-  mockupData: string = "/mockup.json"
-): Promise<T> {
   try {
     const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Impossible de charger les données");
+    if (response.ok) {
+      data = await response.json();
     }
-    return (await response.json()) as T;
   } catch (error) {
     console.error("Error:", error);
-    console.log("JSON Data");
+  }
+  if (!data) {
+    console.log("Loading mockup JSON");
     const response = await fetch(mockupData);
-    if (!response.ok) {
+    if (response.ok) {
+      data = await response.json();
+    } else {
       throw new Error("Impossible de charger les données json");
     }
-    return (await response.json()) as T;
   }
+  return data;
 }
