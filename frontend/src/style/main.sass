@@ -89,6 +89,25 @@
         font-weight: 400
         line-height: 24px
 
-    .healthMetrics
+// Metrics activity
+.healthMetrics
+    min-height: 60vh
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    &_box
         display: flex
         flex-direction: row
+        align-items: center
+    &_container
+        &-data
+            margin-left: 1rem
+            color: $dark-background
+            &-nbr
+                font-size: 20px
+                font-weight: 700
+                line-height: 24px
+                margin: 0
+            &-type 
+                margin: 0
+

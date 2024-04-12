@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Calories from "../../public/assets/icons/calories.svg";
+import Protein from "../../public/assets/icons/protein.svg";
 import Carbs from "../../public/assets/icons/carbs.svg";
 import Fat from "../../public/assets/icons/fat.svg";
-import Protein from "../../public/assets/icons/protein.svg";
 
 interface HealthMetricsProps {
   dataType: string;
@@ -20,10 +20,10 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({
   lipidCount,
 }) => {
   return (
-    <div>
-      <div className="healthMetrics">
+    <div className="healthMetrics">
+      <div className="healthMetrics_box">
         <div className="healthMetrics-icon">
-          <Image src={Calories} alt="Calories" width={50} height={50} />
+          <Image src={Calories} alt="Calories" width={60} height={60} />
         </div>
         <div className="healthMetrics_container">
           <div className="healthMetrics_container-data">
@@ -32,9 +32,9 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({
           </div>
         </div>
       </div>
-      <div className="healthMetrics">
+      <div className="healthMetrics_box">
         <div className="healthMetrics-icon">
-          <Image src={Protein} alt="Calories" width={50} height={50} />
+          <Image src={Protein} alt="Calories" width={60} height={60} />
         </div>
         <div className="healthMetrics_container">
           <div className="healthMetrics_container-data">
@@ -43,20 +43,22 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({
           </div>
         </div>
       </div>
-      <div className="healthMetrics">
+      <div className="healthMetrics_box">
         <div className="healthMetrics-icon">
-          <Image src={Carbs} alt="Calories" width={50} height={50} />
+          <Image src={Carbs} alt="Calories" width={60} height={60} />
         </div>
         <div className="healthMetrics_container">
           <div className="healthMetrics_container-data">
-            <p className="healthMetrics_container-data-nbr">{carbohydrateCount}</p>
+            <p className="healthMetrics_container-data-nbr">
+              {carbohydrateCount}
+            </p>
             <p className="healthMetrics_container-data-type">Glucides</p>
           </div>
         </div>
-      </div>
-      <div className="healthMetrics">
+      </div>{" "}
+      <div className="healthMetrics_box">
         <div className="healthMetrics-icon">
-          <Image src={Fat} alt="Calories" width={50} height={50} />
+          <Image src={Fat} alt="Calories" width={60} height={60} />
         </div>
         <div className="healthMetrics_container">
           <div className="healthMetrics_container-data">

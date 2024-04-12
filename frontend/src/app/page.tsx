@@ -24,25 +24,19 @@ export default function Home() {
   const [data, setData] = useState<Data | null>(null);
 
   useEffect(() => {
-    fetchData("http://localhost:3000/user/12", "../../public/mockup.json")
+    fetchData("http://localhost:3000/user/12", mockupData)
       .then((response) => {
-        console.log("Fetched data:", response.data);
-        console.log("Type of data:", typeof response.data);
-        console.log("Is an array?", Array.isArray(response.data));
         if (response.data) {
-          console.log("userInfos:", response.data.userInfos);
-          console.log("keyData:", response.data.keyData);
           setData(response.data); // Set data
         }
       })
       .catch((error) =>
-        console.error("Error, impossible de récupérer la data:", error)
+        console.error("Erreur, impossible de récupérer la data:", error)
       );
   }, []);
 
   return (
     <main>
-      <h1>Hi</h1>
       <div className="container">
         {data && <UserWelcome userInfos={data.userInfos} />}
         {data && (
