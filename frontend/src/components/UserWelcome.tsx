@@ -7,6 +7,11 @@ interface UserWelcomeProps {
 export default function UserWelcome({ userInfos }: UserWelcomeProps) {
   console.log("userInfos:", userInfos);
 
+  if (!userInfos) {
+    console.error("No userInfos provided");
+    return null; 
+  }
+
   return (
     <div className="user_container">
       <div className="user_container-welcome">

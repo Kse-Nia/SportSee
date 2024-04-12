@@ -23,7 +23,6 @@ ul, li {
   min-width: 80vw;
   flex: 2;
   margin: 3em;
-  background-color: green;
 }
 
 .header {
@@ -120,4 +119,8 @@ ul, li {
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
+}
+.user_container .healthMetrics {
+  display: flex;
+  flex-direction: row;
 }/*# sourceMappingURL=main.css.map */
