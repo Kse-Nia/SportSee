@@ -1,22 +1,25 @@
-export async function fetchData(url: string, mockupData: string): Promise<any> {
-  let data = null;
-
+export async function fetchData<T>(
+  url: string,
+  mockupData: (filePath: string) => T
+): Promise<T | null> {
   try {
     const response = await fetch(url);
-    if (response.ok) {
-      data = await response.json();
+    if (!response.ok) {
+      throw new Error(`Erreur de requête : ${response.status}`);
     }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-  if (!data) {
-    console.log("Loading mockup JSON");
-    const response = await fetch(mockupData);
-    if (response.ok) {
-      data = await response.json();
-    } else {
-      throw new Error("Impossible de charger les données json");
+    const data = await response.json();
+    console.log("Data récupérée endpoint");
+    return data;
+  } catch (err) {
+    console.warn(err);
+    try {
+      const filePath = "/mockup.json";
+      const localData = mockupData(filePath);
+      console.log("Data récupérée mockupLocal");
+      return localData;
+    } catch (error) {
+      console.error("Échec du chargement des données locales :", error);
+      return null;
     }
   }
-  return data;
 }

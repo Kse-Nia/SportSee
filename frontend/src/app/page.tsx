@@ -1,32 +1,56 @@
 "use client";
 import { useEffect, useState } from "react";
-import { fetchData } from "@/utils/fetch";
-import mockupData from "../../public/mockup.json";
+import { fetchData } from "@/utils/fetch"; // Fetching function
+import mockupData from "../../public/mockup.json"; // Import JSON mockup data
 import UserWelcome from "../components/UserWelcome";
 import HealthMetrics from "@/components/HealthMetrics";
 
-type Data = {
+const userUrl = process.env.NEXT_PUBLIC_URL_User;
+
+interface Data {
   id: number;
   userInfos: {
     firstName: string;
     lastName: string;
     age: number;
   };
+  todayScore?: number;
   keyData: {
     calorieCount: number;
     proteinCount: number;
     carbohydrateCount: number;
     lipidCount: number;
   };
-};
+  userId: number;
+  sessions: {
+    day: string;
+    kilogram: number;
+    calories: number;
+  }[];
+  sessionsWeight: {
+    day: string;
+    kilogram: number;
+    calories: number;
+  }[];
+  sessionsLength: {
+    day: number;
+    sessionLength: number;
+  }[];
+  kind: { [key: string]: string };
+  data: {
+    value: number;
+    kind: string;
+  }[];
+}
 
 export default function Home() {
   const [data, setData] = useState<Data | null>(null);
 
   useEffect(() => {
-    fetchData("http://localhost:3000/user/12", mockupData)
+    fetchData(`${userUrl}/12`, mockupData)
       .then((response) => {
         if (response.data) {
+          console.log("Data récupérée:", response.data);
           setData(response.data); // Set data
         }
       })
