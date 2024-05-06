@@ -7,7 +7,7 @@ interface UserWelcomeProps {
 export default function UserWelcome({ userInfos }: UserWelcomeProps) {
   if (!userInfos) {
     console.error("No userInfos provided");
-    return null; 
+    return null;
   }
 
   return (

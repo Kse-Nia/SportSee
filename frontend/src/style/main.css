@@ -23,6 +23,7 @@ ul, li {
   min-width: 80vw;
   flex: 2;
   margin: 3em;
+  flex-direction: column;
 }
 
 .header {
@@ -144,4 +145,8 @@ ul, li {
 }
 .healthMetrics_container-data-type {
   margin: 0;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/* .activity
+ *  width: 100%
+ *  height: 400px *//*# sourceMappingURL=main.css.map */
