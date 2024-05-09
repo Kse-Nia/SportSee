@@ -31,6 +31,7 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
   const referenceWeight = (minWeight + maxWeight) / 2;
 
   // Max calories for the YAxis
+  const minCalories = Math.min(...daysIndex.map((item) => item.calories));
   const maxCalories = Math.max(...daysIndex.map((item) => item.calories));
 
   return (
@@ -56,7 +57,7 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
         />
         <YAxis
           dataKey="kilogram"
-          domain={[minWeight, maxWeight]}
+          domain={[minWeight - 20, maxWeight + 20]}
           orientation="right"
           tickLine={false}
           tickMargin={20}
@@ -65,7 +66,7 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
         <YAxis
           yAxisId="right"
           dataKey="calories"
-          domain={[0, maxCalories]}
+          domain={[minCalories - 20, maxCalories + 20]}
           orientation="right"
           stroke="#82ca9d"
           hide={true}
