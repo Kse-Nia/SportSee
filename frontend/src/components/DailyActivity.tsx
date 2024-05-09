@@ -1,17 +1,4 @@
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  ReferenceLine,
-  RadarChart,
-} from "recharts";
-import { useEffect } from "react";
-import { index } from "d3";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
 
 interface ActivityProps {
   dailyActivity: {
@@ -20,6 +7,19 @@ interface ActivityProps {
     calories: number;
   }[];
 }
+
+const CustomTooltip = ({ payload }) => {
+  if (payload && payload.length) {
+    const { kilogram, calories } = payload[0].payload;
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{kilogram} kg</p>
+        <p className="label">{calories} kcal</p>
+      </div>
+    );
+  }
+  return null;
+};
 
 const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
   const daysIndex = dailyActivity.map((day, index) => ({ ...day, index })); // New array with days as index + data
@@ -35,7 +35,6 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
 
   return (
     <div className="activity">
-      {/*  <ResponsiveContainer width="100%" height={300}> */}
       <BarChart
         width={600}
         height={320}
@@ -71,7 +70,7 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           stroke="#82ca9d"
           hide={true}
         />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
         <ReferenceLine
           y={referenceWeight}
           stroke="grey"
@@ -92,7 +91,6 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           barSize={10}
         />
       </BarChart>
-      {/*    </ResponsiveContainer> */}
     </div>
   );
 };

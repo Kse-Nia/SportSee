@@ -1,44 +1,47 @@
 import {
+  Radar,
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
-  Legend
 } from "recharts";
+import { formatData } from "@/utils/formatData";
 interface RadarProps {
-  children: React.ReactNode;
+  performances: {
+    kind: string;
+    value: number;
+  }[];
 }
 
-const Radar: React.FC<RadarProps> = ({ dailyActivity }) => {
+const RadarGraphe: React.FC<RadarProps> = ({ performances }) => {
+  const formatedPerformances = formatData(performances);
+  console.log("performances", formatedPerformances);
+
   return (
-    <div>
+    <div className="performances_container">
       <RadarChart
-        outerRadius={90}
-        width={730}
-        height={250}
-        data={dailyActivity}
+        outerRadius={150}
+        width={450}
+        height={300}
+        data={formatedPerformances}
       >
-        <PolarGrid />
-        <PolarAngleAxis dataKey="subject" />
-        <PolarRadiusAxis angle={30} domain={[0, 150]} />
-        <Radar
-          name="Mike"
-          dataKey="A"
-          stroke="#8884d8"
-          fill="#8884d8"
-          fillOpacity={0.6}
+        <PolarGrid stroke="#FFFFFF" />
+        <PolarAngleAxis
+          margin={2}
+          tickLine={false}
+          fontSize={15}
+          dataKey="kind"
+          fill="#FFFFFF"
+          stroke="#FFFFFF"
         />
         <Radar
-          name="Lily"
-          dataKey="B"
-          stroke="#82ca9d"
-          fill="#82ca9d"
-          fillOpacity={0.6}
+          name="Performance"
+          dataKey="value"
+          fill="#FF0101"
+          fillOpacity={0.7}
         />
-        <Legend />
       </RadarChart>
     </div>
   );
 };
 
-export default Radar;
+export default RadarGraphe;

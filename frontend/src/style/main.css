@@ -8,6 +8,8 @@ body {
 main {
   font-family: Roboto;
   border-box: box-sizing;
+  display: flex;
+  flex-direction: column;
 }
 
 ul, li {
@@ -60,6 +62,15 @@ ul, li {
 }
 .header-links-link:hover {
   color: #FF0101;
+}
+.header_children {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+.header_children:hover .header-links-dropdown {
+  display: block;
 }
 
 .side_container {
@@ -122,6 +133,18 @@ ul, li {
   line-height: 24px;
 }
 
+.custom-tooltip {
+  width: 60px;
+  height: 90px;
+  color: #FFFFFF;
+  font-size: 14px;
+  background-color: #E60000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .healthMetrics {
   min-height: 60vh;
   display: flex;
@@ -147,6 +170,58 @@ ul, li {
   margin: 0;
 }
 
-/* .activity
- *  width: 100%
- *  height: 400px *//*# sourceMappingURL=main.css.map */
+.radial-bar {
+  width: 217px;
+  max-height: 217px;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.radial-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.radial-bar-container_score {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.radial-bar-container_title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.performances_container {
+  width: 400px;
+  height: 400px;
+  background-color: #282D30;
+  color: #FFFFFF;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.performances_container-kind {
+  margin: 1rem;
+}
+
+.line-chart {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  background-color: #FF0000;
+  border-radius: 10px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0.8;
+}
+.line-chart-title {
+  position: absolute;
+}/*# sourceMappingURL=main.css.map */

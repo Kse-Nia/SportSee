@@ -6,10 +6,14 @@ import UserWelcome from "../components/UserWelcome";
 import HealthMetrics from "@/components/HealthMetrics";
 import DailyActivity from "@/components/DailyActivity";
 import Score from "@/components/Score";
-
+import RadarGraphe from "@/components/Radar";
+import Duration from "@/components/Duration";
 const userUrl = process.env.NEXT_PUBLIC_URL_User;
+import { chechScore } from "@/utils/formatData";
+
 interface UserData {
   userInfos: {
+    id: number;
     firstName: string;
     lastName: string;
     age: number;
@@ -22,22 +26,34 @@ interface UserData {
     lipidCount: number;
   };
 }
-
 interface UserActivity {
-  userId: number;
+  id: number;
   sessions: Session[];
 }
 
 interface Session {
   day: string;
-  kilogram: number;
+  sessionsWeight: number;
   calories: number;
 }
 
+interface UserPerformance {
+  id: number;
+  kind: string;
+  data: {
+    value: number;
+    kind: string;
+  };
+}
+
 export default function Home() {
-  const [userData, setUserData] = useState<UserData | null>(null);
-  const [userActivity, setUserActivity] = useState<UserActivity | null>(null);
-  const [userSessions, setUserSessions] = useState<Session | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null); // User data
+  const [userActivity, setUserActivity] = useState<UserActivity | null>(null); // User activity
+  const [userSessions, setUserSessions] = useState<Session[] | null>(null); // User sessions
+  const [userPerformance, setUserPerformance] =
+    useState<UserPerformance | null>(null); // User performance
+
+  const findScore = chechScore(userData); // Get the right score
 
   // Hook to fetch data
   useEffect(() => {
@@ -52,28 +68,28 @@ export default function Home() {
           `${userUrl}/12/average-sessions`,
           mockupData
         );
+        const fetchUserPerformance = await fetchData(
+          `${userUrl}/12/performance`,
+          mockupData
+        );
+
         if (fetchUserData) setUserData(fetchUserData.data);
         if (fetchUserActivity) setUserActivity(fetchUserActivity.data);
-        console.log("Data daily activity : ", fetchUserActivity.data);
-        //console.log("allUserWeight", allUserWeight);
-        //console.log("user score", fetchUserData.todayScore);
-        if (fetchUserSessions) setUserSessions(fetchUserSessions.data);
+        if (fetchUserSessions) setUserSessions(fetchUserSessions.data.sessions);
+        if (fetchUserPerformance) setUserPerformance(fetchUserPerformance.data);
       } catch (err) {
         console.log("Error, impossible de récupérer la data : ", err);
       }
     };
-
     fetchAllData();
   }, []);
-
-  const allUserWeight = userActivity?.sessions.map(
-    (session) => session.kilogram
-  );
 
   return (
     <main>
       <div className="container">
-        {userData && <UserWelcome userInfos={userData.userInfos} />}
+        <div className="container_welcome">
+          {userData && <UserWelcome userInfos={userData.userInfos} />}
+        </div>
         {userActivity && (
           <div className="container_userActivity">
             <DailyActivity
@@ -83,22 +99,26 @@ export default function Home() {
           </div>
         )}
         {userData && (
-          <div className="container_userMetrics">
-            <HealthMetrics
-              dataType="calorieCount"
-              dataValue={userData.keyData.calorieCount.toString()}
-              proteinCount={userData.keyData.proteinCount.toString()}
-              calorieCount={userData.keyData.calorieCount.toString()}
-              carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
-              lipidCount={userData.keyData.lipidCount.toString()}
-            />
-          </div>
-        )}
-        {userData && (
-          <div className="container_userMetrics">
-            <Score
-              score={userData.score}
-            />
+          <div className="graph">
+            <div className="container_userMetrics">
+              <HealthMetrics
+                dataType="calorieCount"
+                dataValue={userData.keyData.calorieCount.toString()}
+                proteinCount={userData.keyData.proteinCount.toString()}
+                calorieCount={userData.keyData.calorieCount.toString()}
+                carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
+                lipidCount={userData.keyData.lipidCount.toString()}
+              />
+            </div>
+            <div className="container_userMetrics">
+              <Score score={findScore} />
+            </div>
+            <div className="container_radar">
+              <RadarGraphe performances={userPerformance} />
+            </div>
+            <div className="session_container">
+              <Duration sessionDuration={userSessions} />
+            </div>
           </div>
         )}
       </div>

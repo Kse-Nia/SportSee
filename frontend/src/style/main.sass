@@ -33,7 +33,14 @@
             padding: 0.5rem
             &:hover
                 color: $primary
-
+    &_children
+        position: relative
+        display: flex
+        flex-direction: column
+        display: none
+        &:hover
+            .header-links-dropdown
+                display: block
 // Sidebar
 .side_container
     display: flex
@@ -68,7 +75,6 @@
         white-space: nowrap
 
 // User Welcome message
-
 .user_container
     display: flex
     flex-direction: column
@@ -90,6 +96,18 @@
         font-weight: 400
         line-height: 24px
 
+    // Daily activity
+.custom-tooltip
+    width: 60px
+    height: 90px
+    color: #FFFFFF
+    font-size: 14px
+    background-color: #E60000
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    
 // Metrics activity
 .healthMetrics
     min-height: 60vh
@@ -112,7 +130,54 @@
             &-type
                 margin: 0
 
-    // activity
-/* .activity
-    width: 100%
-    height: 400px */
+// Radial bar score
+.radial-bar
+    width: 217px
+    max-height: 217px
+    background-color: orange
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.radial-bar-container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    &_score
+        font-size: 48px
+        font-weight: 700
+        line-height: 24px
+    &_title
+        font-size: 14px
+        font-weight: 500
+        line-height: 24px
+        color: $background
+
+    // Radar chart
+.performances_container
+    width: 400px
+    height: 400px
+    background-color: #282D30
+    color: #FFFFFF
+    border-radius: 12px
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: auto
+    &-kind
+        margin: 1rem
+
+// Duration Line Chart
+.line-chart
+    position: relative
+    width: 260px
+    height: 260px
+    background-color: #FF0000
+    border-radius: 10px
+    //color: #FFFFFF
+    font-size: 15px
+    color: rgba(255, 255, 255, 0.5)
+    opacity: 0.8
+    &-title
+        position: absolute
