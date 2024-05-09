@@ -8,14 +8,14 @@ export async function fetchData<T>(
       throw new Error(`Erreur de requête : ${response.status}`);
     }
     const data = await response.json();
-    console.log("Data récupérée endpoint");
+    console.log("Data récupérée du serveur");
     return data;
   } catch (err) {
     console.warn(err);
     try {
       const filePath = "/mockup.json";
       const localData = mockupData(filePath);
-      console.log("Data récupérée mockupLocal");
+      console.log("Data récupérée du mockupLocal");
       return localData;
     } catch (error) {
       console.error("Échec du chargement des données locales :", error);
