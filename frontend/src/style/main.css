@@ -133,6 +133,11 @@ ul, li {
   line-height: 24px;
 }
 
+.container_userActivity {
+  display: flex;
+  flex-direction: row;
+}
+
 .custom-tooltip {
   width: 60px;
   height: 90px;

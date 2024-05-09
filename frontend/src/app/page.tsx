@@ -86,41 +86,45 @@ export default function Home() {
 
   return (
     <main>
-      <div className="container">
-        <div className="container_welcome">
-          {userData && <UserWelcome userInfos={userData.userInfos} />}
-        </div>
-        {userActivity && (
-          <div className="container_userActivity">
-            <DailyActivity
-              dailyActivity={userActivity.sessions}
-              dailyActivityWeight={userActivity.sessionsWeight}
-            />
-          </div>
-        )}
-        {userData && (
-          <div className="graph">
-            <div className="container_userMetrics">
-              <HealthMetrics
-                dataType="calorieCount"
-                dataValue={userData.keyData.calorieCount.toString()}
-                proteinCount={userData.keyData.proteinCount.toString()}
-                calorieCount={userData.keyData.calorieCount.toString()}
-                carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
-                lipidCount={userData.keyData.lipidCount.toString()}
+      <div className="container_welcome">
+        {userData && <UserWelcome userInfos={userData.userInfos} />}
+      </div>
+      <div className="container_charts">
+        <div className="container_userActivity">
+          {userActivity && (
+            <>
+              <DailyActivity
+                dailyActivity={userActivity.sessions}
+                dailyActivityWeight={userActivity.sessionsWeight}
               />
+              <div className="session_container">
+                <Duration sessionDuration={userSessions} />
+              </div>
+              <div className="container_radar">
+                <RadarGraphe performances={userPerformance} />
+              </div>
+              <div className="container_userMetrics">
+                <Score score={findScore} />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="container_healthmetric">
+          {userData && (
+            <div className="graph">
+              <div className="container_userMetrics">
+                <HealthMetrics
+                  dataType="calorieCount"
+                  dataValue={userData.keyData.calorieCount.toString()}
+                  proteinCount={userData.keyData.proteinCount.toString()}
+                  calorieCount={userData.keyData.calorieCount.toString()}
+                  carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
+                  lipidCount={userData.keyData.lipidCount.toString()}
+                />
+              </div>
             </div>
-            <div className="container_userMetrics">
-              <Score score={findScore} />
-            </div>
-            <div className="container_radar">
-              <RadarGraphe performances={userPerformance} />
-            </div>
-            <div className="session_container">
-              <Duration sessionDuration={userSessions} />
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </main>
   );
