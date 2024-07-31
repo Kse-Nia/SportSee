@@ -1,4 +1,12 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ReferenceLine,
+} from "recharts";
 
 interface ActivityProps {
   dailyActivity: {
@@ -36,62 +44,75 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
 
   return (
     <div className="activity">
-      <BarChart
-        width={600}
-        height={320}
-        data={daysIndex}
-        barGap={8}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <XAxis
-          scale="point"
-          dataKey="index"
-          tickLine={false}
-          padding={{ left: 10, right: 10 }}
-          tick={{ fontSize: 16, fill: "#9B9EAC", height: 30 }}
-        />
-        <YAxis
-          dataKey="kilogram"
-          domain={[minWeight - 20, maxWeight + 20]}
-          orientation="right"
-          tickLine={false}
-          tickMargin={20}
-          axisLine={false}
-        />
-        <YAxis
-          yAxisId="right"
-          dataKey="calories"
-          domain={[minCalories - 20, maxCalories + 20]}
-          orientation="right"
-          stroke="#82ca9d"
-          hide={true}
-        />
-        <Tooltip content={<CustomTooltip />} />
-        <ReferenceLine
-          y={referenceWeight}
-          stroke="grey"
-          strokeDasharray="3 3"
-        />
-        <ReferenceLine y={maxWeight} stroke="grey" strokeDasharray="3 3" />
-        <Bar
-          dataKey="kilogram"
-          fill="#282D30"
-          radius={[10, 10, 0, 0]}
-          barSize={10}
-        />
-        <Bar
-          yAxisId="right"
-          dataKey="calories"
-          fill="#E60000"
-          radius={[10, 10, 0, 0]}
-          barSize={10}
-        />
-      </BarChart>
+      <div className="activity_header-legend">
+        <p>Activité quotidienne</p>
+        <div className="activity_header-legend-item">
+          <span className="activity_header-legend-colorweight"></span>
+          <span>Poids (kg)</span>
+        </div>
+        <div className="activity_header-legend-item">
+          <span className="activity_header-legend-colorcalories"></span>
+          <span>Calories brûlées (kCal)</span>
+        </div>
+      </div>
+      <ResponsiveContainer width="100%" height={320}>
+        <BarChart
+          data={daysIndex}
+          width={600}
+          height={320}
+          barGap={8}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <XAxis
+            scale="point"
+            dataKey="index"
+            tickLine={false}
+            padding={{ left: 10, right: 10 }}
+            tick={{ fontSize: 16, fill: "#9B9EAC", height: 30 }}
+          />
+          <YAxis
+            dataKey="kilogram"
+            domain={[minWeight - 20, maxWeight + 20]}
+            orientation="right"
+            tickLine={false}
+            tickMargin={20}
+            axisLine={false}
+          />
+          <YAxis
+            yAxisId="right"
+            dataKey="calories"
+            domain={[minCalories - 20, maxCalories + 20]}
+            orientation="right"
+            stroke="#82ca9d"
+            hide={true}
+          />
+          <Tooltip content={<CustomTooltip />} />
+          <ReferenceLine
+            y={referenceWeight}
+            stroke="grey"
+            strokeDasharray="3 3"
+          />
+          <ReferenceLine y={maxWeight} stroke="grey" strokeDasharray="3 3" />
+          <Bar
+            dataKey="kilogram"
+            fill="#282D30"
+            radius={[10, 10, 0, 0]}
+            barSize={10}
+          />
+          <Bar
+            yAxisId="right"
+            dataKey="calories"
+            fill="#E60000"
+            radius={[10, 10, 0, 0]}
+            barSize={10}
+          />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };

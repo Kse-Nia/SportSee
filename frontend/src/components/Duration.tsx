@@ -22,6 +22,7 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
   return (
     <div className="line-chart">
       <p className="line-chart-title">Durée moyenne des sessions</p>
+      <ResponsiveContainer width={258} height={263}>
       <LineChart width={260} height={260} data={sessionDuration}>
         <XAxis dataKey="day" hide={true} />
         <YAxis hide={true} />
@@ -34,6 +35,7 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
           activeDot={{ r: 1 }}
         />
       </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

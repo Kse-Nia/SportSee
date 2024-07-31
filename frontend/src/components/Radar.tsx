@@ -1,4 +1,5 @@
 import {
+  ResponsiveContainer,
   Radar,
   RadarChart,
   PolarGrid,
@@ -18,28 +19,28 @@ const RadarGraphe: React.FC<RadarProps> = ({ performances }) => {
 
   return (
     <div className="performances_container">
-      <RadarChart
-        outerRadius={150}
-        width={450}
-        height={300}
-        data={formatedPerformances}
-      >
-        <PolarGrid stroke="#FFFFFF" />
-        <PolarAngleAxis
-          margin={2}
-          tickLine={false}
-          fontSize={15}
-          dataKey="kind"
-          fill="#FFFFFF"
-          stroke="#FFFFFF"
-        />
-        <Radar
-          name="Performance"
-          dataKey="value"
-          fill="#FF0101"
-          fillOpacity={0.7}
-        />
-      </RadarChart>
+      <ResponsiveContainer width={280} height={280}>
+        <RadarChart
+          outerRadius={70} 
+          data={formatedPerformances}
+        >
+          <PolarGrid stroke="#FFFFFF" />
+          <PolarAngleAxis
+            margin={2}
+            tickLine={false}
+            fontSize={15}
+            dataKey="kind"
+            fill="#FFFFFF"
+            stroke="#FFFFFF"
+          />
+          <Radar
+            name="Performance"
+            dataKey="value"
+            fill="#FF0101"
+            fillOpacity={0.7}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
     </div>
   );
 };
