@@ -85,44 +85,38 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <div className="container_welcome">
+    <main className="dashboard">
+      <div className="dashboard__welcome">
         {userData && <UserWelcome userInfos={userData.userInfos} />}
       </div>
-      <div className="container_charts">
-        <div className="container_userActivity">
+      <div className="dashboard__content">
+        <div className="dashboard__activity">
           {userActivity && (
             <>
-              <DailyActivity
-                dailyActivity={userActivity.sessions}
-                dailyActivityWeight={userActivity.sessionsWeight}
-              />
-              <div className="session_container">
+              <div className="activity__daily">
+                <DailyActivity
+                  dailyActivity={userActivity.sessions}
+                  dailyActivityWeight={userActivity.sessionsWeight}
+                />
+              </div>
+              <div className="activity__graphs">
                 <Duration sessionDuration={userSessions} />
-              </div>
-              <div className="container_radar">
                 <RadarGraphe performances={userPerformance} />
-              </div>
-              <div className="container_userMetrics">
                 <Score score={findScore} />
               </div>
             </>
           )}
         </div>
-        <div className="container_healthmetric">
+        <div className="dashboard__health-metrics">
           {userData && (
-            <div className="graph">
-              <div className="container_userMetrics">
-                <HealthMetrics
-                  dataType="calorieCount"
-                  dataValue={userData.keyData.calorieCount.toString()}
-                  proteinCount={userData.keyData.proteinCount.toString()}
-                  calorieCount={userData.keyData.calorieCount.toString()}
-                  carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
-                  lipidCount={userData.keyData.lipidCount.toString()}
-                />
-              </div>
-            </div>
+            <HealthMetrics
+              dataType="calorieCount"
+              dataValue={userData.keyData.calorieCount.toString()}
+              proteinCount={userData.keyData.proteinCount.toString()}
+              calorieCount={userData.keyData.calorieCount.toString()}
+              carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
+              lipidCount={userData.keyData.lipidCount.toString()}
+            />
           )}
         </div>
       </div>

@@ -160,7 +160,12 @@ ul, li {
   flex-direction: column;
   justify-content: space-between;
 }
+.healthMetrics-icon {
+  background-color: rgba(74, 184, 255, 0.1019607843);
+}
 .healthMetrics_box {
+  background-color: #FBFBFB;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -213,6 +218,8 @@ ul, li {
 }
 
 .line-chart {
+  height: 263px;
+  min-width: 240px;
   position: relative;
   background-color: #FF0000;
   border-radius: 10px;
@@ -220,8 +227,29 @@ ul, li {
   color: rgba(255, 255, 255, 0.5);
   opacity: 0.8;
 }
+.line-chart:before {
+  content: "";
+  width: 30%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.1;
+  position: absolute;
+  right: 0;
+}
 .line-chart-title {
   position: absolute;
+  padding-top: 30px;
+  padding-left: 30px;
+  font-size: 15px;
+  max-width: 200px;
+  line-height: 24px;
+}
+.line-chart-legend {
+  display: flex;
+  padding-bottom: 25px;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .dashboard {
