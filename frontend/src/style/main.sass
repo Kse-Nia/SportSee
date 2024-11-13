@@ -3,6 +3,7 @@
 
 // Navbar
 .header
+    width: 100%
     background-color: $dark-background
     color: $background
     padding: 1rem
@@ -46,7 +47,8 @@
     display: flex
     flex-direction: column
     justify-content: space-evenly
-    height: 100vh
+    //height: 100vh
+    height: 100%
     width: 117px
     background-color: $dark-background
     &_actvities
@@ -118,10 +120,11 @@
 
 // Metrics activity
 .healthMetrics
-    background-color: orange
+    //background-color: orange
     width: 25vw
     height: 100%
     min-height: 60vh
+    margin-left: 4rem
     display: flex
     flex-direction: column
     justify-content: space-between
@@ -139,31 +142,38 @@
             margin-left: 1rem
             color: $dark-background
             &-nbr
-                font-size: 20px
+                font-size: 1.25rem
                 font-weight: 700
                 line-height: 24px
                 margin: 0
             &-type
                 margin: 0
+                color: #74798C
+                font-size: 0.9rem
 
 // Radial bar score
-.radial-bar
-    width: 260px
-    max-height: 260px
-    background-color: orange
+.radial-chart
+    margin-left: 1rem
     display: flex
     flex-direction: column
-    justify-content: center
+    position: relative
+    &__label
+        font-family: 'Roboto', sans-serif
+        font-weight: 500
+        font-size: 26px
+        font-weight: bold
+        fill: #282D30
+        &-text
+            font-size: 16px
+            fill: #74798C
+            font-weight: 500
 
-    &-container
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-    &_score
-        font-size: 48px
-        font-weight: 700
+    &__title
+        font-size: 15px
         line-height: 24px
+        top: 10px
+        left: 10px
+        color: #20253A
 
     // Radar chart
 .performances_container
@@ -211,9 +221,9 @@
 
     /// New clean code dashboard
 .dashboard
-    max-width: 100vw
-    display: flex
-
+    //max-width: 100vw
+    &__health-metrics
+        max-width: 50%
     &__content
         display: flex
         flex-direction: row
@@ -222,25 +232,38 @@
         flex-direction: row
 
 .activity
-    min-width: 60vw
+    //min-width: 60vw
+    max-width: 50%
     &_header
         &-legend
+            //width: 100%
             display: flex
             justify-content: space-between
             flex-direction: row
             &-item
+                max-width: 277px
                 display: flex
                 align-items: center
+                margin-left: 10px
+            &-item
+                display: flex
+                align-items: center
+                &-container
+                    display: flex
+                    align-items: center
+                    margin-left: 10px
             &-colorweight
                 display: inline-block
                 width: 10px
                 height: 10px
+                margin-right: 1em
                 border-radius: 50%
                 background-color: black
             &-colorcalories
                 display: inline-block
                 width: 10px
                 height: 10px
+                margin-right: 1em
                 border-radius: 50%
                 background-color: red
     &__daily
@@ -248,4 +271,4 @@
     &__graphs
         display: flex
         flex-direction: row
-        background-color: green
+        //background-color: green

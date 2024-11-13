@@ -1,24 +1,34 @@
+#root
+    display: flex
+    flex-direction: column
+    //min-height: 100vh
+    max-width: 100vw
 body
     margin: 0
     padding: 0
     overflow: auto
-    border: 1px solid red
-
-main
-    font-family: Roboto
-    border-box: box-sizing
     display: flex
     flex-direction: column
+    min-height: 100vh
+
+main
+    width: 100%
+    font-family: Roboto, sans-serif
+    box-sizing: border-box
+    display: flex
+    flex-direction: column
+    flex: 1 // Permet à main de prendre tout l'espace disponible
+    background-color: orange
 
 ul, li
-    tex-decoration: none
+    text-decoration: none
     list-style: none
 
 // Organize side, nav bars and main
 .container
     display: flex
+    flex: 1 // Permet à container de prendre tout l'espace disponible
+
+// Responsive
 .main
-    min-width: 80vw
-    flex: 2
-    margin: 3em
-    flex-direction: column
+    flex: 1
