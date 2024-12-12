@@ -1,6 +1,6 @@
 # Projet SportSee
 <div align="center">
-<img src="src/assets/logo.svg" alt="SportSee"/>
+<img src="./frontend/public/assets/logo.svg" alt="SportSee"/>
 </div>
 
 ## À propos du projet
