@@ -11,6 +11,11 @@ import Duration from "@/components/Duration";
 const userUrl = process.env.NEXT_PUBLIC_URL_User;
 import { chechScore } from "@/utils/formatData";
 
+import Calories from "../../public/assets/icons/calories.svg";
+import Protein from "../../public/assets/icons/protein.svg";
+import Carbs from "../../public/assets/icons/carbs.svg";
+import Fat from "../../public/assets/icons/fat.svg";
+
 interface UserData {
   userInfos: {
     id: number;
@@ -55,7 +60,7 @@ export default function Home() {
 
   const findScore = chechScore(userData); // Get the right score
 
-  // Hook to fetch data
+  // Hook to fetch data API
   useEffect(() => {
     const fetchAllData = async () => {
       try {
@@ -84,6 +89,28 @@ export default function Home() {
     fetchAllData();
   }, []);
 
+  // Metrics data for the HealthMetrics component
+  const metrics = userData
+    ? [
+        {
+          icon: Calories,
+          count: userData.keyData.calorieCount,
+          type: "Calories",
+        },
+        {
+          icon: Protein,
+          count: userData.keyData.proteinCount,
+          type: "Protéines",
+        },
+        {
+          icon: Carbs,
+          count: userData.keyData.carbohydrateCount,
+          type: "Glucides",
+        },
+        { icon: Fat, count: userData.keyData.lipidCount, type: "Lipides" },
+      ]
+    : [];
+
   return (
     <main className="dashboard">
       <div className="dashboard__welcome">
@@ -108,16 +135,7 @@ export default function Home() {
           )}
         </div>
         <div className="dashboard__health-metrics">
-          {userData && (
-            <HealthMetrics
-              dataType="calorieCount"
-              dataValue={userData.keyData.calorieCount.toString()}
-              proteinCount={userData.keyData.proteinCount.toString()}
-              calorieCount={userData.keyData.calorieCount.toString()}
-              carbohydrateCount={userData.keyData.carbohydrateCount.toString()}
-              lipidCount={userData.keyData.lipidCount.toString()}
-            />
-          )}
+          {userData && <HealthMetrics metrics={metrics} />}
         </div>
       </div>
     </main>

@@ -106,7 +106,7 @@
         flex-direction: row
         //background-color: green
 
-    // Daily activity
+// Daily activity
 .custom-tooltip
     width: 60px
     height: 90px
@@ -118,41 +118,10 @@
     justify-content: space-between
     align-items: center
 
-// Metrics activity
-.healthMetrics
-    //background-color: orange
-    width: 25vw
-    height: 100%
-    min-height: 60vh
-    margin-left: 4rem
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    &-icon
-        background-color: #4AB8FF1A
-    &_box
-        background-color: #FBFBFB
-        border-radius: 10px
-        display: flex
-        flex-direction: row
-        align-items: center
-
-    &_container
-        &-data
-            margin-left: 1rem
-            color: $dark-background
-            &-nbr
-                font-size: 1.25rem
-                font-weight: 700
-                line-height: 24px
-                margin: 0
-            &-type
-                margin: 0
-                color: #74798C
-                font-size: 0.9rem
-
 // Radial bar score
 .radial-chart
+    width: 258px
+    height: 263px
     margin-left: 1rem
     display: flex
     flex-direction: column
@@ -177,6 +146,8 @@
 
     // Radar chart
 .performances_container
+    width: 258px
+    height: 263px
     background-color: #282D30
     color: #FFFFFF
     border-radius: 12px
@@ -188,16 +159,22 @@
         margin: 1rem
 
 // Duration Line Chart
-.line-chart
+.duration
+    width: 258px
     height: 263px
-    min-width: 240px
+    margin: 1rem
+    border-radius: 12px
+    display: flex
+    flex-direction: column
     position: relative
-    background-color: #FF0000
-    border-radius: 10px
-    font-size: 15px
-    color: rgba(255, 255, 255, 0.5)
-    opacity: 0.8
-    &:before
+    background: $primary
+    border-radius: 5px
+    opacity: 0.9
+    font-family: $font-family
+    font-size: 12px
+    font-weight: $font-weight
+
+    &::before
         content: ""
         width: 30%
         height: 100%
@@ -205,70 +182,151 @@
         opacity: 0.1
         position: absolute
         right: 0
-    &-title
-        position: absolute
+
+    &__title
+        color: $dark-background
+        font-weight: $font-weight
         padding-top: 30px
         padding-left: 30px
         font-size: 15px
         max-width: 200px
         line-height: 24px
-    &-legend
+
+    &__legend
         display: flex
         padding-bottom: 25px
         justify-content: space-between
         padding-left: 10px
         padding-right: 10px
 
-    /// New clean code dashboard
+    p
+        color: $dark-background
+        font-weight: $font-weight
+
+.recharts-tooltip-item-list,
+.xAxis
+    display: none
+
+/// Dashboard
 .dashboard
-    //max-width: 100vw
-    &__health-metrics
-        max-width: 50%
+    &__activity
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        margin: 0 auto
+        box-sizing: border-box
+
     &__content
         display: flex
         flex-direction: row
         justify-content: space-between
-    &__activity
+        align-items: flex-start
+        width: 100%
+        max-width: 1024px
+        height: 780px
+        box-sizing: border-box
+
+    &__health-metrics
+        flex: 0 0 30%
+        height: 100%
+        margin: 0
+        box-sizing: border-box
+
+    &__daily
+        background-color: green
+        margin-bottom: 20px
+
+    &__graphs
+        width: 100%
+        display: flex
         flex-direction: row
+        width: 100%
+        justify-content: space-between
+        margin-bottom: 20px
 
 .activity
-    //min-width: 60vw
-    max-width: 50%
-    &_header
-        &-legend
-            //width: 100%
-            display: flex
-            justify-content: space-between
-            flex-direction: row
-            &-item
-                max-width: 277px
-                display: flex
-                align-items: center
-                margin-left: 10px
-            &-item
-                display: flex
-                align-items: center
-                &-container
-                    display: flex
-                    align-items: center
-                    margin-left: 10px
-            &-colorweight
-                display: inline-block
-                width: 10px
-                height: 10px
-                margin-right: 1em
-                border-radius: 50%
-                background-color: black
-            &-colorcalories
-                display: inline-block
-                width: 10px
-                height: 10px
-                margin-right: 1em
-                border-radius: 50%
-                background-color: red
-    &__daily
-        min-width: 100%
+    margin: 0 2em 2em
+    height: 320px
+    width: 100%
+    border-radius: 5px
+    background: #fbfbfb
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.021)
+
+    &__header
+        display: flex
+        justify-content: space-between
+        margin-bottom: 2.5rem
+        margin-right: 1.5rem
+
+    &__title
+        font-size: 15px
+        line-height: 24px
+        color: #20253a
+
+    &__legend
+        display: flex
+
+    &__info
+        display: flex
+        align-items: center
+        margin-left: 20px
+
+    &:first-of-type
+        margin-left: 0
+
+    &__icon
+        height: 8px
+        width: 8px
+        border-radius: 50%
+        margin-right: 10px
+        &--weight
+            background-color: #282d30
+        &--calories
+            background-color: #e60000
+
+    &--weight
+        background-color: #282d30
+
+    &--calories
+        background-color: #e60000
+
+    &__text
+        font-weight: 500
+        font-size: 14px
+        color: #74798c
+
     &__graphs
         display: flex
         flex-direction: row
-        //background-color: green
+        justify-content: space-around
+        margin-top: 20px
+        margin-bottom: 20px
+
+// Metrics activity
+.healthMetrics
+    //height: 100%
+    height: 700px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    &_box
+        width: 60%
+        border-radius: 10px
+        display: flex
+        flex-direction: row
+        align-items: center
+    &_container
+        &-data
+            margin-left: 1rem
+            color: $dark-background
+            &-nbr
+                font-size: 1.25rem
+                font-weight: 700
+                line-height: 24px
+                margin: 0
+            &-type
+                margin: 0
+                color: #74798C
+                font-size: 0.9rem
