@@ -16,16 +16,14 @@ Cette page va notamment permettre à l’utilisateur de suivre le nombre de sess
 - Affichage des données de l'utilisateur (nombre de sessions, nombre de calories brûlées, temps d'activité) sous forme de graphiques
 
 ## Outils utilisés
-Projet réalisé avec React et D3.js
-
-<img src="public/react_icon.svg" alt="react icon" width="100" /> <img src="public/d3.svg" alt="D3" width="100" />
+Projet réalisé avec React et Recharts
 
 Lien Kanban : [Kanban](
     https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)
 
 ## Les indépendances
 
-NodeJS, NextJS, D3
+NodeJS, NextJS, Recharts
 
 ## Installation
 
