@@ -2,12 +2,12 @@
 // Radar data
 export const formatData = (performances) => {
   const kindTypes = {
-    1: "Cardio",
-    2: "Energy",
-    3: "Endurance",
-    4: "Strength",
-    5: "Speed",
-    6: "Intensity",
+    1: "Intensité",
+    2: "Vitesse",
+    3: "Force",
+    4: "Endurance",
+    5: "Energie",
+    6: "Cardio",
   };
 
   return performances?.data.map((performance) => ({

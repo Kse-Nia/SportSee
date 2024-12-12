@@ -6,6 +6,8 @@ import {
   YAxis,
   Tooltip,
   ReferenceLine,
+  CartesianGrid,
+  LabelList,
 } from "recharts";
 
 interface ActivityProps {
@@ -42,74 +44,76 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
   const minCalories = Math.min(...daysIndex.map((item) => item.calories));
   const maxCalories = Math.max(...daysIndex.map((item) => item.calories));
 
+  const formattedData = dailyActivity.map((item, index) => ({
+    ...item,
+    index: index + 1, // Add 1 to index to start at 1
+  }));
   return (
     <div className="activity">
-      <div className="activity_header-legend">
-        <p>Activité quotidienne</p>
-        <div className="activity_header-legend-item">
-          <span className="activity_header-legend-colorweight"></span>
-          <span>Poids (kg)</span>
-        </div>
-        <div className="activity_header-legend-item">
-          <span className="activity_header-legend-colorcalories"></span>
-          <span>Calories brûlées (kCal)</span>
+      <div className="activity__header">
+        <h2 className="activity__title">Activité quotidienne</h2>
+        <div className="activity__legend">
+          <div className="activity__info">
+            <div className="activity__icon activity__icon--weight"></div>
+            <p className="activity__text">Poids (kg)</p>
+          </div>
+          <div className="activity__info">
+            <div className="activity__icon activity__icon--calories"></div>
+            <p className="activity__text">Calories brûlées (kCal)</p>
+          </div>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={320}>
-        <BarChart
-          data={daysIndex}
-          width={600}
-          height={320}
-          barGap={8}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
+
+      <ResponsiveContainer height={200}>
+        <BarChart data={formattedData} barGap={8} barCategoryGap={1}>
+          <CartesianGrid vertical={false} strokeDasharray="1 1" />
           <XAxis
-            scale="point"
             dataKey="index"
             tickLine={false}
-            padding={{ left: 10, right: 10 }}
-            tick={{ fontSize: 16, fill: "#9B9EAC", height: 30 }}
+            tick={{ fontSize: 14 }}
+            dy={15}
+            stroke="1 1"
           />
           <YAxis
+            yAxisId="kilogram"
             dataKey="kilogram"
-            domain={[minWeight - 20, maxWeight + 20]}
+            type="number"
+            domain={["dataMin - 2", "dataMax + 1"]}
+            tickCount={4}
+            axisLine={false}
             orientation="right"
             tickLine={false}
-            tickMargin={20}
-            axisLine={false}
+            tick={{ fontSize: 14 }}
+            dx={15}
           />
           <YAxis
-            yAxisId="right"
+            yAxisId="calories"
             dataKey="calories"
-            domain={[minCalories - 20, maxCalories + 20]}
-            orientation="right"
-            stroke="#82ca9d"
+            type="number"
+            domain={["dataMin - 20", "dataMax + 10"]}
             hide={true}
           />
           <Tooltip content={<CustomTooltip />} />
-          <ReferenceLine
-            y={referenceWeight}
-            stroke="grey"
-            strokeDasharray="3 3"
-          />
-          <ReferenceLine y={maxWeight} stroke="grey" strokeDasharray="3 3" />
           <Bar
+            yAxisId="kilogram"
             dataKey="kilogram"
             fill="#282D30"
-            radius={[10, 10, 0, 0]}
-            barSize={10}
-          />
+            barSize={7}
+            radius={[50, 50, 0, 0]}
+          >
+            <LabelList
+              dataKey="index" // Index for each activity
+              position="bottom"
+              offset={10}
+              style={{ fontSize: "16px", fill: "#9B9EAC" }}
+            />
+          </Bar>
           <Bar
-            yAxisId="right"
+            yAxisId="calories"
             dataKey="calories"
             fill="#E60000"
-            radius={[10, 10, 0, 0]}
-            barSize={10}
+            barSize={7}
+            radius={[50, 50, 0, 0]}
           />
         </BarChart>
       </ResponsiveContainer>

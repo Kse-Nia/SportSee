@@ -1,6 +1,6 @@
 export async function fetchData<T>(
   url: string,
-  mockupData: any
+  mockupData: (filePath: string) => T
 ): Promise<T | null> {
   try {
     const response = await fetch(url);

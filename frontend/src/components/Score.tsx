@@ -1,43 +1,49 @@
-import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
+import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 import { formatScoreData } from "@/utils/formatData";
 
 const Score: React.FC<ScoreProps> = ({ score }) => {
   const data = formatScoreData(score); // Format score for the radialbar chart
 
   return (
-    <div className="radial-bar">
-      <p className="radial-bar-title">Score</p>
-      <div className="radial-bar-container">
+    <div className="radial-chart">
+      <p className="radial-chart__title">Score</p>
+      <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
-          width={300}
-          height={150}
-          cx={150}
-          cy={150}
-          innerRadius="70%"
+          cx="50%"
+          cy="50%"
+          innerRadius="80%"
           outerRadius="100%"
-          barSize={10}
-          startAngle={180}
-          endAngle={0}
           data={data}
+          startAngle={90}
+          endAngle={90 + 360 * (data[0].value / 100)}
         >
           <RadialBar
             minAngle={15}
-            cornerRadius={10}
-            clockWise={true}
+            clockWise
             dataKey="value"
+            cornerRadius={10}
+            fill="#FF0000"
           />
-          <PolarAngleAxis
-            type="number"
-            domain={[0, 100]}
-            angleAxisId={0}
-            tick={false}
-          />
+          <text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="radial-chart__label"
+          >
+            {`${data[0].value}%`}
+          </text>
+          <text
+            x="50%"
+            y="70%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="radial-chart__label-text"
+          >
+            de votre objectif
+          </text>
         </RadialBarChart>
-        <div className="radial-bar-score">
-          <p className="percentage">{score * 100}%</p>
-          <p className="label">de votre objectif</p>
-        </div>
-      </div>
+      </ResponsiveContainer>
     </div>
   );
 };
