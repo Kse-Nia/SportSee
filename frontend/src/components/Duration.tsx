@@ -17,17 +17,21 @@ interface DurationProps {
 }
 
 const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
-  
-
   return (
     <div className="duration">
       <div className="duration__title">Durée moyenne des sessions</div>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={sessionDuration} margin={{ bottom: 10 }}>
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.5)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
+            </linearGradient>
+          </defs>
           <Line
             type="monotone"
             dataKey="sessionLength"
-            stroke="#FFFFFF"
+            stroke="url(#colorUv)"
             strokeWidth={2.5}
             dot={false}
           />
