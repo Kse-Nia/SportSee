@@ -7,7 +7,7 @@ import HealthMetrics from "@/components/HealthMetrics";
 import DailyActivity from "@/components/DailyActivity";
 import Score from "@/components/Score";
 import RadarGraphe from "@/components/Radar";
-import Duration from "@/components/Duration";
+import Duration from "@/components/LineChart";
 const userUrl = process.env.NEXT_PUBLIC_URL_User;
 import { chechScore } from "@/utils/formatData";
 

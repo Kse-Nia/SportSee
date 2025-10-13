@@ -2,10 +2,7 @@ import {
   LineChart,
   Line,
   XAxis,
-  YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -21,7 +18,7 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
     <div className="duration">
       <div className="duration__title">Durée moyenne des sessions</div>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={sessionDuration} margin={{ bottom: 10 }}>
+        <LineChart data={sessionDuration} margin={{ top: 20, bottom: 20 }}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="rgba(255, 255, 255, 0.5)" />
@@ -29,16 +26,29 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
             </linearGradient>
           </defs>
           <Line
-            type="monotone"
+            type="natural"
             dataKey="sessionLength"
             stroke="url(#colorUv)"
-            strokeWidth={2.5}
+            strokeWidth={2}
             dot={false}
+            activeDot={{
+              fill: "#FFF",
+              r: 5,
+              strokeWidth: 10,
+              strokeOpacity: 0.4,
+            }}
           />
-          <XAxis dataKey="sessionLength" />
+          <XAxis dataKey="day" hide />
           <Tooltip
             cursor={false}
             wrapperStyle={{ outline: "none", fontWeight: 600 }}
+            contentStyle={{
+              backgroundColor: "rgba(255, 255, 255, 0.9)", // background color
+              color: "black", // text color
+              border: "none",
+              padding: "5px",
+              fontWeight: "normal",
+            }}
             labelFormatter={(value) => `${value} min`}
           />
         </LineChart>

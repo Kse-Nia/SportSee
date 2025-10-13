@@ -33,16 +33,7 @@ const CustomTooltip = ({ payload }) => {
 
 const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
   const daysIndex = dailyActivity.map((day, index) => ({ ...day, index })); // New array with days as index + data
-  const allWeights = daysIndex.map((item) => item.kilogram);
-
-  // Min and Max kilogram for the YAxis
-  const minWeight = Math.min(...allWeights);
-  const maxWeight = Math.max(...allWeights);
-  const referenceWeight = (minWeight + maxWeight) / 2;
-
-  // Max calories for the YAxis
-  const minCalories = Math.min(...daysIndex.map((item) => item.calories));
-  const maxCalories = Math.max(...daysIndex.map((item) => item.calories));
+ const allWeights = daysIndex.map((item) => item.kilogram);
 
   const formattedData = dailyActivity.map((item, index) => ({
     ...item,
