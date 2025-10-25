@@ -16,10 +16,10 @@ import { checkScore } from "./utils/formatData"; // check score function
 import React from "react";
 
 // Activities Icons
-/* import { ReactComponent as Calories } from "./assets/icons/calories.svg";
+import { ReactComponent as Calories } from "./assets/icons/calories.svg";
 import { ReactComponent as Protein } from "./assets/icons/protein.svg";
 import { ReactComponent as Carbs } from "./assets/icons/carbs.svg";
-import { ReactComponent as Fat } from "./assets/icons/fat.svg"; */
+import { ReactComponent as Fat } from "./assets/icons/fat.svg";
 
 interface UserData {
   userInfos: {
@@ -98,22 +98,22 @@ export default function Home() {
   const metrics = userData
     ? [
         {
-          //icon: Calories,
+          icon: Calories,
           count: userData.keyData.calorieCount,
           type: "Calories",
         },
         {
-          // icon: Protein,
+          icon: Protein,
           count: userData.keyData.proteinCount,
           type: "Protéines",
         },
         {
-          //icon: Carbs,
+          icon: Carbs,
           count: userData.keyData.carbohydrateCount,
           type: "Glucides",
         },
         {
-          //icon: Fat,
+          icon: Fat,
           count: userData.keyData.lipidCount,
           type: "Lipides",
         },
