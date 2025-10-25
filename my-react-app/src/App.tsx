@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "./utils/fetch"; // Fetching function
-
 import mockupData from "./data/mockup.json"; // JSON data instead of API
-
+import Layout from "./components/Layout"; // Layout, page organization
 import UserWelcome from "./components/UserWelcome"; // Welcome component
 import HealthMetrics from "./components/HealthMetrics"; // Health metrics component
 import DailyActivity from "./components/DailyActivity"; // Daily activity component
@@ -13,13 +12,12 @@ import Duration from "./components/charts/Duration"; // Duration component
 const userUrl = import.meta.env.VITE_USER_URL;
 
 import { checkScore } from "./utils/formatData"; // check score function
-import React from "react";
 
 // Activities Icons
-import { ReactComponent as Calories } from "./assets/icons/calories.svg";
-import { ReactComponent as Protein } from "./assets/icons/protein.svg";
-import { ReactComponent as Carbs } from "./assets/icons/carbs.svg";
-import { ReactComponent as Fat } from "./assets/icons/fat.svg";
+import Calories from "./assets/icons/calories.svg";
+import Protein from "./assets/icons/protein.svg";
+import Carbs from "./assets/icons/carbs.svg";
+import Fat from "./assets/icons/fat.svg";
 
 interface UserData {
   userInfos: {
