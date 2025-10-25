@@ -1,9 +1,11 @@
+import React from "react";
+
 export default function Sidebar() {
   return (
     <div className="side_container">
       <div className="side_container_actvities">
         <div className="side_container_actvities-icon">
-          <img src="/assets/yoga.svg" alt="Yoga icon" />
+          <img src="/assets/yoga" alt="Yoga icon" />
         </div>
         <div className="side_container_actvities-icon">
           <img src="/assets/swim.svg" alt="Swim icon" />

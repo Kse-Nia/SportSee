@@ -1,3 +1,5 @@
+import React from "react";
+
 interface UserWelcomeProps {
   userInfos: {
     firstName: string;

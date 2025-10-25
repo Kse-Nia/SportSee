@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "./utils/fetch"; // Fetching function
-//import mockupData from "../../public/mockup.json"; // Import JSON mockup data
-import mockupData from "../public/mockup.json"; // Import JSON mockup data
-import UserWelcome from "./components/UserWelcome";
-import HealthMetrics from "./components/HealthMetrics";
-import DailyActivity from "./components/DailyActivity";
-import Score from "./components/Score";
-import RadarGraphe from "./components/Radar";
-import Duration from "./components/Duration";
+
+import mockupData from "./data/mockup.json"; // JSON data instead of API
+
+import UserWelcome from "./components/UserWelcome"; // Welcome component
+import HealthMetrics from "./components/HealthMetrics"; // Health metrics component
+import DailyActivity from "./components/DailyActivity"; // Daily activity component
+import Score from "./components/charts/Score"; // Score component
+import RadarGraphe from "./components/charts/Radar"; // Radar graph component
+import Duration from "./components/charts/Duration"; // Duration component
+
 const userUrl = import.meta.env.VITE_USER_URL;
 
 import { checkScore } from "./utils/formatData"; // check score function
+import React from "react";
 
 // Activities Icons
-import Calories from "./assets/icons/calories.svg";
-import Protein from "./assets/icons/protein.svg";
-import Carbs from "./assets/icons/carbs.svg";
-import Fat from "./assets/icons/fat.svg";
+/* import { ReactComponent as Calories } from "./assets/icons/calories.svg";
+import { ReactComponent as Protein } from "./assets/icons/protein.svg";
+import { ReactComponent as Carbs } from "./assets/icons/carbs.svg";
+import { ReactComponent as Fat } from "./assets/icons/fat.svg"; */
 
 interface UserData {
   userInfos: {
@@ -95,21 +98,25 @@ export default function Home() {
   const metrics = userData
     ? [
         {
-          icon: Calories,
+          //icon: Calories,
           count: userData.keyData.calorieCount,
           type: "Calories",
         },
         {
-          icon: Protein,
+          // icon: Protein,
           count: userData.keyData.proteinCount,
           type: "Protéines",
         },
         {
-          icon: Carbs,
+          //icon: Carbs,
           count: userData.keyData.carbohydrateCount,
           type: "Glucides",
         },
-        { icon: Fat, count: userData.keyData.lipidCount, type: "Lipides" },
+        {
+          //icon: Fat,
+          count: userData.keyData.lipidCount,
+          type: "Lipides",
+        },
       ]
     : [];
 

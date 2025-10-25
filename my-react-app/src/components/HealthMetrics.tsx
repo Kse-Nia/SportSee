@@ -1,3 +1,4 @@
+import React from "react";
 
 interface Metric {
   icon: string;
@@ -14,7 +15,7 @@ const HealthMetrics: React.FC<HealthMetricsProps> = ({ metrics }) => {
       {metrics.map((metric, index) => (
         <div className="healthMetrics_box" key={index}>
           <div className="healthMetrics-icon">
-            <Image src={metric.icon} alt={metric.type} width={60} height={60} />
+            <img src={metric.icon} alt={metric.type} width={60} height={60} />
           </div>
           <div className="healthMetrics_container">
             <div className="healthMetrics_container-data">

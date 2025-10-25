@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
   ResponsiveContainer,
   Radar,
@@ -5,7 +7,8 @@ import {
   PolarGrid,
   PolarAngleAxis,
 } from "recharts";
-import { formatData } from "../utils/formatData";
+import { formatData } from "../../utils/formatData";
+
 interface RadarProps {
   performances: {
     kind: string;
