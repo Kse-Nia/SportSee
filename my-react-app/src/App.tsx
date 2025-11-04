@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Layout from "./components/Layout"; // Import Navbars
 
 import UserWelcome from "./components/UserWelcome"; // Welcome component
-import HealthMetrics from "./components/HealthMetrics"; // Health metrics component
+import HealthMetrics from "./components/charts/HealthMetrics"; // Health metrics component
 import DailyActivity from "./components/DailyActivity"; // Daily activity component
 import Score from "./components/charts/Score"; // Score component
 import RadarGraphe from "./components/charts/Radar"; // Radar graph component
