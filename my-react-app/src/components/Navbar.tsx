@@ -6,7 +6,7 @@ export default function Navbar() {
     <header>
       <nav className="header">
         <div className="logo-container">
-          <img src="/assets/logo.svg" alt="SportSee logo" />
+          <img src="/public/logo.svg" alt="SportSee logo" />
         </div>
         <div className="header-links">
           <ul>

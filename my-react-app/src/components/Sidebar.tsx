@@ -5,16 +5,16 @@ export default function Sidebar() {
     <div className="side_container">
       <div className="side_container_actvities">
         <div className="side_container_actvities-icon">
-          <img src="/assets/yoga" alt="Yoga icon" />
+          <img src="/public/yoga.svg" alt="Yoga icon" />
         </div>
         <div className="side_container_actvities-icon">
-          <img src="/assets/swim.svg" alt="Swim icon" />
+          <img src="/public/swim.svg" alt="Swim icon" />
         </div>
         <div className="side_container_actvities-icon">
-          <img src="/assets/bike.svg" alt="Bike icon" />
+          <img src="/public/bike.svg" alt="Bike icon" />
         </div>
         <div className="side_container_actvities-icon">
-          <img src="/assets/dumbbell.svg" alt="Dumbbell icon" />
+          <img src="/public/dumbbell.svg" alt="Dumbbell icon" />
         </div>
       </div>
       <div className="side_container-copyright">
