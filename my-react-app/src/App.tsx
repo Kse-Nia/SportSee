@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import Home from "./pages/Home"; // Import Home page
 import Layout from "./components/Layout"; // Import Navbars
-
 const userUrl = import.meta.env.VITE_USER_URL;
 
 export default function App() {
