@@ -150,6 +150,9 @@ li {
   line-height: 24px;
 }
 
+.container {
+  width: 100%;
+}
 .container_userActivity {
   max-width: 60%;
   display: flex;
@@ -262,13 +265,11 @@ li {
   display: none;
 }
 
-.dashboard__activity {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  box-sizing: border-box;
+.dashboard {
+  max-width: 100%;
+}
+.dashboard__welcome {
+  width: auto;
 }
 .dashboard__content {
   display: flex;
@@ -278,6 +279,14 @@ li {
   width: 100%;
   max-width: 1024px;
   height: 780px;
+  box-sizing: border-box;
+}
+.dashboard__activity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 .dashboard__health-metrics {
