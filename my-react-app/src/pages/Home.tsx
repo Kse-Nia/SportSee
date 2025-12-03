@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; // Hooks
 import { fetchData } from "../utils/fetch"; // Fetching function
 import mockupData from "../data/mockup.json"; // JSON data instead of API
 const userUrl = import.meta.env.VITE_USER_URL; // .env import
@@ -7,7 +7,7 @@ import UserWelcome from "../components/UserWelcome"; // Welcome component
 import HealthMetrics from "../components/charts/HealthMetrics"; // Health metrics component
 import DailyActivity from "../components/DailyActivity"; // Daily activity component
 import Score from "../components/charts/Score"; // Score component
-import RadarGraphe from "../components/charts/Radar"; // Radar graph component
+import PerformanceGraphe from "../components/charts/Performance"; // Radar graph component
 import Duration from "../components/charts/Duration"; // Duration component
 
 import { checkScore } from "../utils/formatData"; // check score function
@@ -134,7 +134,7 @@ export default function Home() {
               </div>
               <div className="activity__graphs">
                 <Duration sessionDuration={userSessions} />
-                <RadarGraphe performances={userPerformance} />
+                <PerformanceGraphe performances={userPerformance} />
                 <Score score={findScore} />
               </div>
             </>
