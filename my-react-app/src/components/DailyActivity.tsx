@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   ResponsiveContainer,
   BarChart,
@@ -7,11 +6,11 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ReferenceLine,
   CartesianGrid,
   LabelList,
 } from "recharts";
 
+import { formatDailyActivityData } from "../utils/formatData"; // Import formatting function
 interface ActivityProps {
   dailyActivity: {
     day: string;
@@ -33,14 +32,9 @@ const CustomTooltip = ({ payload }) => {
   return null;
 };
 
-const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
-  const daysIndex = dailyActivity.map((day, index) => ({ ...day, index })); // New array with days as index + data
- const allWeights = daysIndex.map((item) => item.kilogram);
+const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
+  const formattedData = formatDailyActivityData(dailyActivity); // Format data for indexing
 
-  const formattedData = dailyActivity.map((item, index) => ({
-    ...item,
-    index: index + 1, // Add 1 to index to start at 1
-  }));
   return (
     <div className="activity">
       <div className="activity__header">
@@ -114,4 +108,4 @@ const Activity: React.FC<ActivityProps> = ({ dailyActivity }) => {
   );
 };
 
-export default Activity;
+export default DailyActivity;
