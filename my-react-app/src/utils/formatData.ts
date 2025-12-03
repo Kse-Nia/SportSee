@@ -44,6 +44,7 @@ export const formatData = (performances) => {
 
 // Score format to %
 export const formatScoreData = (score) => {
+  // change ! tofixed
   return [{ name: "Score", value: score * 100, fill: "#FF0000" }];
 };
 

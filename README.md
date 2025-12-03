@@ -17,6 +17,7 @@ Cette page va notamment permettre à l’utilisateur de suivre le nombre de sess
 
 ## Outils utilisés
 Projet réalisé avec React et Recharts
+Docker pour le backend
 
 Lien Kanban : [Kanban](
     https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)

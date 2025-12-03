@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react"; // Hooks
 import { fetchData } from "../utils/fetch"; // Fetching function
 import mockupData from "../data/mockup.json"; // JSON data instead of API

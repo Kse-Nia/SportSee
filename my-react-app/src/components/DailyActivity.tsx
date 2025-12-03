@@ -11,13 +11,6 @@ import {
 } from "recharts";
 
 import { formatDailyActivityData } from "../utils/formatData"; // Import formatting function
-interface ActivityProps {
-  dailyActivity: {
-    day: string;
-    kilogram: number;
-    calories: number;
-  }[];
-}
 
 const CustomTooltip = ({ payload }) => {
   if (payload && payload.length) {
