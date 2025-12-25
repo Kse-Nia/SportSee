@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout"; // Import and organize navbars and content
-import Home from "./pages/Home"; // Import Home page
+import Layout from "./components/Layout.js"; // Import and organize navbars and content
+import Home from "./pages/Home.js"; // Import Home page
 const userUrl = import.meta.env.VITE_USER_URL; 
 
 export default function App() {
