@@ -1,13 +1,16 @@
-import { DailyActivityItem, dataPerformance } from "./types";
+import type { DailyActivityItem, dataPerformance } from "./types"; // Data types import
 
 // Daily activity format data for indexing
 export const formatDailyActivityData = (
   dailyActivity: DailyActivityItem[]
 ): (DailyActivityItem & { index: number })[] => {
-  return dailyActivity.map((item, index) => ({
-    ...item,
-    index: index + 1,
-  }));
+  return dailyActivity.map((item, index) => {
+    console.log(item); // Ici, item existe
+    return {
+      ...item,
+      index: index + 1,
+    };
+  });
 };
 
 // Radar data
