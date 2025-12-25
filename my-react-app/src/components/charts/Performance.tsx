@@ -7,7 +7,7 @@ import {
   PolarGrid,
   PolarAngleAxis,
 } from "recharts";
-import { formatData } from "../../utils/formatData";
+import { formatData } from "../../utils/formatData.js";
 
 interface RadarProps {
   performances: {

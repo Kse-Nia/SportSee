@@ -10,7 +10,7 @@ import {
   LabelList,
 } from "recharts";
 
-import { formatDailyActivityData } from "../utils/formatData"; // Import formatting function
+import { formatDailyActivityData } from "../utils/formatData.js"; // Import formatting function
 
 const CustomTooltip = ({ payload }) => {
   if (payload && payload.length) {

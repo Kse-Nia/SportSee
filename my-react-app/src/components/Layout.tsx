@@ -1,6 +1,6 @@
 import { Outlet } from "react-router"; //
-import Navbar from "./bars/Navbar";
-import Sidebar from "./bars/Sidebar";
+import Navbar from "./bars/Navbar.js";
+import Sidebar from "./bars/Sidebar.js";
 import React from "react";
 
 interface LayoutProps {
