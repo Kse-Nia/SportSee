@@ -4,6 +4,9 @@ import { formatScoreData } from "../../utils/formatData.js";
 
 const Score: React.FC<ScoreProps> = ({ score }) => {
   const data = formatScoreData(score); // Format score for the radialbar chart
+  
+ // console.log("Formatted Score Data:", data); // Debugging log
+
 
   return (
     <div className="radial-chart">

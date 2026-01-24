@@ -7,7 +7,7 @@ import {
   PolarGrid,
   PolarAngleAxis,
 } from "recharts";
-import { formatData } from "../../utils/formatData.js";
+import { formatPerformancesData } from "../../utils/formatData.js";
 
 interface RadarProps {
   performances: {
@@ -17,7 +17,7 @@ interface RadarProps {
 }
 
 const PerformanceGraphe: React.FC<RadarProps> = ({ performances }) => {
-  const formatedPerformances = formatData(performances);
+  const formatedPerformances = formatPerformancesData(performances);
   console.log("performances", formatedPerformances);
 
   return (

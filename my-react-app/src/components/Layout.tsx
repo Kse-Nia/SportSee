@@ -11,11 +11,11 @@ const Layout: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <div className="sidebar">
+      <div className="app__container">
+        <div className="app__container-sidebars">
           <Sidebar />
         </div>
-        <div className="main">
+        <div className="app__container-main">
           <Outlet />
         </div>
       </div>

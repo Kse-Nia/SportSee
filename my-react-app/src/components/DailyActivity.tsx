@@ -12,13 +12,18 @@ import {
 
 import { formatDailyActivityData } from "../utils/formatData.js"; // Import formatting function
 
-const CustomTooltip = ({ payload }) => {
-  if (payload && payload.length) {
-    const { kilogram, calories } = payload[0].payload;
+const CustomTooltip = ({
+  active,
+  payload,
+}: {
+  active?: boolean;
+  payload?: any[];
+}) => {
+  if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip">
-        <p className="label">{kilogram} kg</p>
-        <p className="label">{calories} kcal</p>
+      <div className="activity__tooltip">
+        <p className="activity__tooltip-item">{payload[0].value}kg</p>
+        <p className="activity__tooltip-item">{payload[1].value}Kcal</p>
       </div>
     );
   }
@@ -30,49 +35,46 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
 
   return (
     <div className="activity">
-      <div className="activity__header">
+      <header className="activity__header">
         <h2 className="activity__title">Activité quotidienne</h2>
-        <div className="activity__legend">
-          <div className="activity__info">
-            <div className="activity__icon activity__icon--weight"></div>
-            <p className="activity__text">Poids (kg)</p>
-          </div>
-          <div className="activity__info">
-            <div className="activity__icon activity__icon--calories"></div>
-            <p className="activity__text">Calories brûlées (kCal)</p>
-          </div>
-        </div>
-      </div>
+        <ul className="activity__legend">
+          <li className="activity__legend-item">
+            <span className="activity__icon activity__icon--weight" />
+            <span className="activity__legend-text">Poids (kg)</span>
+          </li>
+          <li className="activity__legend-item">
+            <span className="activity__icon activity__icon--calories" />
+            <span className="activity__legend-text">
+              Calories brûlées (kCal)
+            </span>
+          </li>
+        </ul>
+      </header>
 
-      <ResponsiveContainer height={200}>
-        <BarChart data={formattedData} barGap={8} barCategoryGap={1}>
-          <CartesianGrid vertical={false} strokeDasharray="1 1" />
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={formattedData}
+          barGap={8}
+          barCategoryGap={1}
+          margin={{ top: 30, right: 30, left: 30, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
-            dataKey="index"
+            dataKey="day"
             tickLine={false}
-            tick={{ fontSize: 14 }}
-            dy={15}
-            stroke="1 1"
+            axisLine={false}
+            tick={{ fill: "#9B9EAC", fontSize: 14 }}
           />
           <YAxis
             yAxisId="kilogram"
             dataKey="kilogram"
-            type="number"
-            domain={["dataMin - 2", "dataMax + 1"]}
-            tickCount={4}
-            axisLine={false}
             orientation="right"
+            axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 14 }}
-            dx={15}
+            tick={{ fill: "#9B9EAC", fontSize: 14 }}
+            domain={["dataMin - 1", "dataMax + 2"]}
           />
-          <YAxis
-            yAxisId="calories"
-            dataKey="calories"
-            type="number"
-            domain={["dataMin - 20", "dataMax + 10"]}
-            hide={true}
-          />
+          <YAxis yAxisId="calories" dataKey="calories" hide />
           <Tooltip content={<CustomTooltip />} />
           <Bar
             yAxisId="kilogram"
