@@ -4,11 +4,30 @@ export interface DailyActivityItem {
   calories: number;
 }
 
-export interface dataPerformance {
+/* export interface dataPerformance {
   kind: string;
   value: number;
+} */
+
+/* export interface Performances {
+  data: PerformanceDataItem[];
+} */
+
+export interface PerformanceDataItem {
+  value: number;
+  kind: number;
 }
 
-export interface Performances {
-  data: PerformanceDataItem[];
+export interface ScoreData {
+  score: number;
+}
+
+export interface SessionDuration {
+  day: number;
+  sessionLength: number;
+}
+
+export interface SessionDuration {
+  day: number;
+  sessionsWeight: number;
 }

@@ -1,11 +1,15 @@
-import type { DailyActivityItem, dataPerformance } from "./types"; // Data types import
+import type {
+  DailyActivityItem,
+  PerformanceDataItem,
+  ScoreData,
+  SessionDuration,
+} from "./types"; // Data types import
 
 // Daily activity format data for indexing
 export const formatDailyActivityData = (
   dailyActivity: DailyActivityItem[]
 ): (DailyActivityItem & { index: number })[] => {
   return dailyActivity.map((item, index) => {
-    console.log(item); // Ici, item existe
     return {
       ...item,
       index: index + 1,
@@ -15,7 +19,7 @@ export const formatDailyActivityData = (
 
 // Radar data
 
-export const formatData = (performances) => {
+export const formatPerformancesData = (performances: PerformanceDataItem) => {
   // Translate kinds data
   const kindTranslation = {
     1: "Cardio",
@@ -46,18 +50,28 @@ export const formatData = (performances) => {
 };
 
 // Score format to %
-export const formatScoreData = (score) => {
+/* export const formatScoreData = (score: ScoreData) => {
   // change ! tofixed
-  return [{ name: "Score", value: score * 100, fill: "#FF0000" }];
-};
+  //return [{ name: "Score", value: score * 100, fill: "#FF0000" }];
+  fill: "#FF0000" 
+}; */
 
+export const formatScoreData = (score: ScoreData) => {
+  return [
+    {
+      name: "Score",
+      value: Math.round(score * 100), // Arrondit à l'entier le + proche
+      fill: "#FF0000",
+    },
+  ];
+};
 // Get right score
 export const checkScore = (userData) => {
   return userData?.todayScore ? userData?.todayScore : userData?.score;
 };
 
 // Duration session; day to letter
-export const formatDurationData = (sessionDuration) => {
+export const formatDurationData = (sessionDuration: SessionDuration) => {
   const daysTypes = {
     1: "L",
     2: "M",
