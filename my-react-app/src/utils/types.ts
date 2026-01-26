@@ -1,33 +1,44 @@
-export interface DailyActivityItem {
-  day: string;
-  kilogram: number;
-  calories: number;
+// User main data
+export interface ActivityProps {
+  dailyActivity: {
+    day: string;
+    kilogram: number;
+    calories: number;
+  }[];
 }
 
-/* export interface dataPerformance {
-  kind: string;
-  value: number;
-} */
-
-/* export interface Performances {
-  data: PerformanceDataItem[];
-} */
-
+// Performance data
 export interface PerformanceDataItem {
   value: number;
   kind: number;
 }
 
+// Score data
 export interface ScoreData {
   score: number;
+  todayScore?: number;
 }
 
+
+/* export interface SessionDuration {
+  day: number;
+  sessionsWeight: number;
+} */
+
+export interface UserData {
+  score?: number;
+  todayScore?: number;
+}
+
+// Session duration data
 export interface SessionDuration {
   day: number;
   sessionLength: number;
 }
 
 export interface SessionDuration {
-  day: number;
-  sessionsWeight: number;
+  sessionDuration: {
+    day: string;
+    sessionLength: number;
+  }[];
 }

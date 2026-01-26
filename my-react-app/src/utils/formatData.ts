@@ -1,14 +1,15 @@
 import type {
-  DailyActivityItem,
+  ActivityProps,
   PerformanceDataItem,
   ScoreData,
   SessionDuration,
-} from "./types"; // Data types import
+  UserData,
+} from "./types"; // TS Data types import
 
-// Daily activity format data for indexing
+/* ========================= FORMAT DAILY ACTIVITY DATA  ========================= */
 export const formatDailyActivityData = (
-  dailyActivity: DailyActivityItem[]
-): (DailyActivityItem & { index: number })[] => {
+  dailyActivity: ActivityProps[]
+): (ActivityProps & { index: number })[] => {
   return dailyActivity.map((item, index) => {
     return {
       ...item,
@@ -17,8 +18,7 @@ export const formatDailyActivityData = (
   });
 };
 
-// Radar data
-
+/* ========================= FORMAT PERFORMANCES DATA  ========================= */
 export const formatPerformancesData = (performances: PerformanceDataItem) => {
   // Translate kinds data
   const kindTranslation = {
@@ -49,30 +49,27 @@ export const formatPerformancesData = (performances: PerformanceDataItem) => {
   return order.map((label) => mapped.find((item) => item.kind === label));
 };
 
-// Score format to %
-/* export const formatScoreData = (score: ScoreData) => {
-  // change ! tofixed
-  //return [{ name: "Score", value: score * 100, fill: "#FF0000" }];
-  fill: "#FF0000" 
-}; */
-
+/* =========================  FORMAT SCORE DATA  ========================= */
 export const formatScoreData = (score: ScoreData) => {
   return [
     {
       name: "Score",
-      value: Math.round(score * 100), // Arrondit à l'entier le + proche
+      value: Math.round(score * 100), // Convert to percentage and round
       fill: "#FF0000",
     },
   ];
 };
-// Get right score
-export const checkScore = (userData) => {
+
+/* =========================  CHECK SCORE DATA FORM ========================= */
+export const checkScore = (userData: UserData) => {
   return userData?.todayScore ? userData?.todayScore : userData?.score;
 };
 
-// Duration session; day to letter
-export const formatDurationData = (sessionDuration: SessionDuration) => {
-  const daysTypes = {
+
+/* =========================  FORMAT SESSION DURATION DATA  ========================= */
+export const formatDurationData = (sessions: SessionDuration) => {
+  console.log("Sessions Data:", sessions); // Debugging log
+  const daysTypes: { [key: number]: string } = {
     1: "L",
     2: "M",
     3: "M",
@@ -81,9 +78,8 @@ export const formatDurationData = (sessionDuration: SessionDuration) => {
     6: "S",
     7: "D",
   };
-
-  return sessionDuration?.map((session) => ({
-    day: daysTypes[session.day],
-    sessionLength: session.sessionsWeight,
+  return sessions?.map((session: SessionDuration) => ({
+    day: daysTypes[session.day], // Converti le jour en lettre
+    sessionLength: session.sessionLength,
   }));
 };

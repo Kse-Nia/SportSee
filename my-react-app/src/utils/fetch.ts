@@ -1,4 +1,4 @@
-import mockupData from "../data/mockup.json";
+import mockupData from "../data/mockup.json" with { type: "json" };
 
 export async function fetchData(url: string) {
   try {
