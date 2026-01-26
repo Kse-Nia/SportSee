@@ -1,69 +1,94 @@
 import React from "react";
-
 import {
   LineChart,
   Line,
   XAxis,
+  YAxis,
   Tooltip,
   ResponsiveContainer,
+  Rectangle,
 } from "recharts";
 
-interface DurationProps {
+/* interface DurationProps {
   sessionDuration: {
     day: string;
     sessionLength: number;
   }[];
-}
+} */
+
+const CustomCursor = ({ points, width, height }: any) => {
+  const { x } = points[0];
+  return (
+    <Rectangle
+      fill="rgba(0, 0, 0, 0.1)"
+      stroke="none"
+      x={x}
+      y={0}
+      width={width - x}
+      height={height + 100}
+    />
+  );
+};
+
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="duration__tooltip">
+        {`${payload[0].value} min`}
+      </div>
+    );
+  }
+  return null;
+};
 
 const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
   return (
     <div className="duration">
-      <div className="duration__title">Durée moyenne des sessions</div>
+      <div className="duration__title">
+        Durée moyenne des sessions
+      </div>
+
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={sessionDuration} margin={{ top: 20, bottom: 20 }}>
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.5)" />
-              <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
-            </linearGradient>
-          </defs>
+        <LineChart
+          data={sessionDuration}
+          margin={{ top: 0, right: 15, left: 15, bottom: 10 }}
+        >
+          <XAxis
+            dataKey="day"
+            axisLine={false}
+            tickLine={false}
+            tick={{
+              fill: "rgba(255, 255, 255, 0.5)",
+              fontSize: 12,
+              fontWeight: 500,
+            }}
+            dy={10}
+            interval="preserveStartEnd"
+            padding={{ left: 10, right: 10 }}
+          />
+          <YAxis
+            hide={true}
+            domain={["dataMin - 10", "dataMax + 20"]}
+          />
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={<CustomCursor />}
+          />
           <Line
             type="natural"
             dataKey="sessionLength"
-            stroke="url(#colorUv)"
+            stroke="rgba(255, 255, 255, 0.6)"
             strokeWidth={2}
             dot={false}
             activeDot={{
-              fill: "#FFF",
-              r: 5,
-              strokeWidth: 10,
-              strokeOpacity: 0.4,
+              fill: "#FFFFFF",
+              r: 4,
+              strokeWidth: 4,
+              stroke: "rgba(255, 255, 255, 0.3)",
             }}
-          />
-          <XAxis dataKey="day" hide />
-          <Tooltip
-            cursor={false}
-            wrapperStyle={{ outline: "none", fontWeight: 600 }}
-            contentStyle={{
-              backgroundColor: "rgba(255, 255, 255, 0.9)", // background color
-              color: "black", // text color
-              border: "none",
-              padding: "5px",
-              fontWeight: "normal",
-            }}
-            labelFormatter={(value) => `${value} min`}
           />
         </LineChart>
       </ResponsiveContainer>
-      <div className="duration__legend">
-        <p>L</p>
-        <p>M</p>
-        <p>M</p>
-        <p>J</p>
-        <p>V</p>
-        <p>S</p>
-        <p>D</p>
-      </div>
     </div>
   );
 };
