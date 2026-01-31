@@ -85,6 +85,9 @@ export default function Home() {
         if (fetchUserActivity) setUserActivity(fetchUserActivity.data);
         if (fetchUserSessions) setUserSessions(fetchUserSessions.data.sessions);
         if (fetchUserPerformance) setUserPerformance(fetchUserPerformance.data);
+
+        console.log(mockupData, "Data mockup !");
+        console.log("User Data:", fetchUserData);
       } catch (err) {
         console.log("Error, impossible de récupérer la data : ", err);
         return <HomeError />;

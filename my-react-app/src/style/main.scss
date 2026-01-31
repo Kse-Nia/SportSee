@@ -38,7 +38,8 @@
   justify-content: space-between;
 
   &__logo {
-    margin-right: 2rem;
+    // margin-right: 2rem;
+    margin: 1rem 2rem 1rem 0;
     img {
       width: 177px;
       display: block;
@@ -83,7 +84,6 @@
 .sidebar {
   width: 117px;
   height: 100%;
-  //height: calc(100vh - 91px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -143,6 +143,24 @@
   }
 }
 
+/* =========================  USER WELCOME MESSAGE ========================= */
+
+.user {
+  &_container {
+    &-welcome,
+    &-name {
+      font-weight: variables.$font-weight;
+      font-size: 48px;
+      margin: 0 0 8px 0;
+    }
+    &-welcome {
+      color: #20253a;
+    }
+    &-name {
+      color: variables.$primary;
+    }
+  }
+}
 /* =========================  DASHBOARD ========================= */
 
 .dashboard {
