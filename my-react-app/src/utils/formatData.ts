@@ -68,7 +68,6 @@ export const checkScore = (userData: UserData) => {
 
 /* =========================  FORMAT SESSION DURATION DATA  ========================= */
 export const formatDurationData = (sessions: SessionDuration) => {
-  console.log("Sessions Data:", sessions); // Debugging log
   const daysTypes: { [key: number]: string } = {
     1: "L",
     2: "M",
@@ -79,7 +78,7 @@ export const formatDurationData = (sessions: SessionDuration) => {
     7: "D",
   };
   return sessions?.map((session: SessionDuration) => ({
-    day: daysTypes[session.day], // Converti le jour en lettre
+    day: daysTypes[session.day], // Convert day number to letter
     sessionLength: session.sessionLength,
   }));
 };

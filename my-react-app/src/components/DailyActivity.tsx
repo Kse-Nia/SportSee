@@ -65,7 +65,7 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
-              dataKey="index" // ⬅️ CORRECTION ICI : "index" au lieu de "day"
+              dataKey="index"
               tickLine={false}
               axisLine={{ stroke: "#DEDEDE" }}
               tick={{ fill: "#9B9EAC", fontSize: 14 }}
