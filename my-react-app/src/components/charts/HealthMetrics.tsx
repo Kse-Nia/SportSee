@@ -11,7 +11,6 @@ interface HealthMetricsProps {
 }
 
 const HealthMetrics: React.FC<HealthMetricsProps> = ({ metrics }) => {
-  // Fonction helper pour générer le nom du modifier
   const getModifier = (type: string) => {
     switch (type) {
       case "Calories":
