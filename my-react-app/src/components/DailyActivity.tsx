@@ -10,6 +10,15 @@ import {
 } from "recharts";
 import { formatDailyActivityData } from "../utils/formatData";
 
+interface ActivitySession {
+  day: string;
+  kilogram: number;
+  calories: number;
+}
+
+interface ActivityProps {
+  dailyActivity: ActivitySession[];
+}
 
 const CustomTooltip = ({
   active,
@@ -57,7 +66,7 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
-              dataKey="day"
+              dataKey="index" // ⬅️ CORRECTION ICI : "index" au lieu de "day"
               tickLine={false}
               axisLine={{ stroke: "#DEDEDE" }}
               tick={{ fill: "#9B9EAC", fontSize: 14 }}
@@ -65,7 +74,6 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
             />
             <YAxis
               yAxisId="kilogram"
-              dataKey="kilogram"
               orientation="right"
               axisLine={false}
               tickLine={false}
