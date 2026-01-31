@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.js"; // Import and organize navbars and content
 import Home from "./pages/Home.js"; // Import Home page

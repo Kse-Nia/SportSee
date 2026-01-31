@@ -1,5 +1,3 @@
-import React from "react";
-
 const HomeError: React.FC = () => {
   return (
     <div className="home-error">
