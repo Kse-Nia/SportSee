@@ -120,33 +120,31 @@ export default function Home() {
       ]
     : [];
 
-  return (
-    <main className="dashboard">
-      <div className="dashboard__welcome">
-        {userData && <UserWelcome userInfos={userData.userInfos} />}
-      </div>
-      <div className="dashboard__content">
-        <div className="dashboard__activity">
-          {userActivity && (
-            <>
-              <div className="activity__daily">
-                <DailyActivity
-                  dailyActivity={userActivity.sessions}
-                  dailyActivityWeight={userActivity.sessionsWeight}
-                />
-              </div>
-              <div className="activity__graphs">
-                <Duration sessionDuration={userSessions} />
-                <PerformanceGraphe performances={userPerformance} />
-                <Score score={findScore} />
-              </div>
-            </>
-          )}
+    return (
+      <main className="dashboard">
+        <div className="dashboard__welcome">
+          {userData && <UserWelcome userInfos={userData.userInfos} />}
         </div>
-        <div className="dashboard__health-metrics">
-          {userData && <HealthMetrics metrics={metrics} />}
+        
+        <div className="dashboard__content">
+          <div className="dashboard__activity">
+            {userActivity && (
+              <>
+                <DailyActivity dailyActivity={userActivity.sessions} />
+                
+                <div className="dashboard__graphs">
+                  <Duration sessionDuration={userSessions} />
+                  <PerformanceGraphe performances={userPerformance} />
+                  <Score score={findScore} />
+                </div>
+              </>
+            )}
+          </div>
+          
+          <div className="dashboard__health-metrics">
+            {userData && <HealthMetrics metrics={metrics} />}
+          </div>
         </div>
-      </div>
-    </main>
-  );
-}
+      </main>
+    );
+  }    
