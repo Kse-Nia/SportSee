@@ -149,56 +149,29 @@
   width: 100%;
   height: 100%;
   &__welcome {
-    width: auto;
+    margin-bottom: 40px;
   }
   &__content {
-    height: auto;
-    height: 100%;
-    //background-color: orange;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    gap: 30px;
     width: 100%;
-    box-sizing: border-box;
   }
   &__activity {
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-  }
-  &__health-metrics {
-    flex: 0 0 30%;
-    height: 100%;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  &__daily {
-    background-color: green;
-    margin-bottom: 20px;
+    gap: 30px;
   }
   &__graphs {
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    @media (max-width: 1024px) {
-      .dashboard__graphs {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .radial-chart,
-      .performances_container,
-      .duration {
-        width: 48%;
-        height: auto;
-      }
-    }
+    gap: 30px;
+    width: 100%;
+  }
+  &__health-metrics {
+    width: 258px;
+    flex-shrink: 0;
   }
 }
 
@@ -273,33 +246,37 @@
 }
 
 /* =========================  SCORE / RADIAL BAR ========================= */
+
 .radial-chart {
   width: 258px;
   height: 263px;
-  margin-left: 1rem;
+  background: #fbfbfb;
+  border-radius: variables.$radius-small;
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: 24px;
+  box-sizing: border-box;
+
+  &__title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #20253a;
+    margin: 0 0 20px 0;
+  }
+
   &__label {
     font-family: "Roboto", sans-serif;
-    font-weight: variables.$font-weight;
+    font-weight: 700;
     font-size: 26px;
-    //font-weight: bold;
     fill: #282d30;
 
     &-text {
       font-size: 16px;
       fill: #74798c;
-      font-weight: variables.$font-weight;
+      font-weight: 500;
     }
-  }
-
-  &__title {
-    font-size: 15px;
-    line-height: 24px;
-    top: 10px;
-    left: 10px;
-    color: #20253a;
   }
 }
 
@@ -309,24 +286,17 @@
   width: 258px;
   height: 263px;
   background-color: #282d30;
-  color: #ffffff;
-  border-radius: variables.$radius;
+  border-radius: variables.$radius-small;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
-
-  &-kind {
-    margin: 1rem;
-  }
 }
 
 /* =========================  DURATION / LINE CHART ========================= */
-
 .duration {
   width: 258px;
   height: 263px;
-  border-radius: variables.$radius;
+  border-radius: variables.$radius-small;
   background: variables.$primary;
   display: flex;
   flex-direction: column;
@@ -339,7 +309,7 @@
     left: 34px;
     z-index: 10;
     font-size: 15px;
-    font-weight: variables.$font-weight;
+    font-weight: 500;
     line-height: 24px;
     max-width: 140px;
     color: rgba(255, 255, 255, 0.5);
@@ -349,12 +319,11 @@
     padding: 10px;
     color: #000000;
     font-size: 12px;
-    font-weight: variables.$font-weight;
+    font-weight: 500;
   }
 }
 
 /* =========================  METRIC ACTIVITY ========================= */
-
 .healthMetrics {
   width: 100%;
   height: 100%;
@@ -362,33 +331,55 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  &_box {
+  gap: 20px;
+  &__card {
     width: 258px;
     height: 124px;
     border-radius: variables.$radius-small;
+    background: #fbfbfb;
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
   }
-
-  &_container {
-    &-data {
-      margin-left: 1rem;
-      color: variables.$dark-background;
-
-      &-nbr {
-        font-size: 1.25rem;
-        font-weight: 700;
-        line-height: 24px;
-        margin: 0;
-      }
-
-      &-type {
-        margin: 0;
-        color: #74798c;
-        font-size: 0.9rem;
-      }
+  &__icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 32px;
+      height: 32px;
     }
+    &--calories {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+    &--protein {
+      background-color: rgba(74, 184, 255, 0.1);
+    }
+    &--carbs {
+      background-color: rgba(249, 206, 35, 0.1);
+    }
+    &--fat {
+      background-color: rgba(253, 81, 129, 0.1);
+    }
+  }
+  &__info {
+    margin-left: 24px;
+    color: variables.$dark-background;
+  }
+  &__value {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0 0 2px 0;
+  }
+  &__label {
+    margin: 0;
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 500;
   }
 }
