@@ -13,7 +13,7 @@ export default function UserWelcome({ userInfos }: UserWelcomeProps) {
   return (
     <div className="user_container">
       <div className="user_container-welcome">
-        <span>Bonjour </span>
+        <span className="user_container-welcome">Bonjour </span>
         <span className="user_container-name">{userInfos.firstName}</span>
       </div>
       <p className="user_container-congrat">
