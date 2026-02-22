@@ -1,4 +1,4 @@
-import mockupData from "../data/mockup.json"; // Import JSON data
+import mockupData from "../data/mockup.json" with { type: "json" }; // Import JSON data
 
 export async function fetchData(url: string, useMock: boolean = false) {
   if (useMock) {

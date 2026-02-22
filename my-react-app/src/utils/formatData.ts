@@ -1,15 +1,14 @@
 import type {
-  ActivityProps,
-  PerformanceDataItem,
-  ScoreData,
+  ActivitySession,
   SessionDuration,
   UserData,
-} from "./types"; // TS Data types import
+  UserPerformance,
+} from "./types.js"; // TS Data types import
 
 /* ========================= FORMAT DAILY ACTIVITY DATA  ========================= */
 export const formatDailyActivityData = (
-  dailyActivity: ActivityProps[]
-): (ActivityProps & { index: number })[] => {
+  dailyActivity: ActivitySession[]
+): (ActivitySession & { index: number })[] => {
   return dailyActivity.map((item, index) => {
     return {
       ...item,
@@ -19,9 +18,9 @@ export const formatDailyActivityData = (
 };
 
 /* ========================= FORMAT PERFORMANCES DATA  ========================= */
-export const formatPerformancesData = (performances: PerformanceDataItem) => {
+export const formatPerformancesData = (performances: UserPerformance) => {
   // Translate kinds data
-  const kindTranslation = {
+  const kindTranslation: Record<number, string> = {
     1: "Cardio",
     2: "Energie",
     3: "Endurance",
@@ -50,7 +49,7 @@ export const formatPerformancesData = (performances: PerformanceDataItem) => {
 };
 
 /* =========================  FORMAT SCORE DATA  ========================= */
-export const formatScoreData = (score: ScoreData) => {
+export const formatScoreData = (score: number) => {
   return [
     {
       name: "Score",
