@@ -80,10 +80,10 @@
 }
 
 /* =========================  SIDEBAR ========================= */
-
 .sidebar {
   width: 117px;
   height: 100%;
+  //min-height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -172,7 +172,7 @@
   &__content {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    //gap: 30px;
     width: 100%;
   }
   &__activity {
@@ -196,12 +196,13 @@
 /* =========================  DAILY ACTIVITY ========================= */
 
 .activity {
-  width: 835px;
+  width: 100%;
+  max-width: 700px;
   height: 320px;
   background: #fbfbfb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: variables.$radius-small;
-  padding: 24px 26px 23px 32px;
+  //padding: 24px 26px 23px 32px;
   display: flex;
   flex-direction: column;
   &__header {

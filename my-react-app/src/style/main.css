@@ -8,7 +8,6 @@ html {
 
 #root {
   height: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -198,7 +197,6 @@ li {
 .dashboard__content {
   display: flex;
   flex-direction: row;
-  gap: 30px;
   width: 100%;
 }
 .dashboard__activity {
@@ -220,12 +218,12 @@ li {
 
 /* =========================  DAILY ACTIVITY ========================= */
 .activity {
-  width: 835px;
+  width: 100%;
+  max-width: 700px;
   height: 320px;
   background: #fbfbfb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 5px;
-  padding: 24px 26px 23px 32px;
   display: flex;
   flex-direction: column;
 }
