@@ -3,23 +3,26 @@ import mockupData from "../data/mockup.json"; // Import JSON data
 export async function fetchData(url: string, useMock: boolean = false) {
   if (useMock) {
     const urlParts = url.split("/");
-    const userIdIndex = urlParts.indexOf("user") + 1;
-    const userId = parseInt(urlParts[userIdIndex]);
+    const userIdIndex = urlParts.indexOf("user") + 1; // Get index of user ID in URL
+    const userId = parseInt(urlParts[userIdIndex]); // Extract user ID from URL
 
+    // Find User in the mockup based on user ID
     const user = Array.isArray(mockupData)
-      ? mockupData.find((u) => u.id === userId)
+      ? mockupData.find((u: any) => u.id === userId)
       : mockupData;
 
+      // Error handling if user not found
     if (!user) {
-      console.error(`Utilisateur ${userId} introuvable dans les mocks`);
+      console.error(`User ${userId} not found in mock`);
       return null;
     }
 
-    // Determine which data to return based on URL
+    // Return  datas based on endpoints
     if (url.includes("/performance")) return { data: user.performance };
     if (url.includes("/average-sessions"))
       return { data: user.averageSessions };
     if (url.includes("/activity")) return { data: user.activity };
+
     return { data: user };
   }
 

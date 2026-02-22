@@ -61,13 +61,13 @@ export const formatScoreData = (score: ScoreData) => {
 };
 
 /* =========================  CHECK SCORE DATA FORM ========================= */
-export const checkScore = (userData: UserData) => {
-  return userData?.todayScore ? userData?.todayScore : userData?.score;
+export const checkScore = (userData: UserData | null): number | undefined => {
+  return userData?.todayScore ?? userData?.score;
 };
 
-
 /* =========================  FORMAT SESSION DURATION DATA  ========================= */
-export const formatDurationData = (sessions: SessionDuration) => {
+export const formatDurationData = (sessions: SessionDuration[]) => {
+  // Translate day numbers to letters
   const daysTypes: { [key: number]: string } = {
     1: "L",
     2: "M",
@@ -78,7 +78,7 @@ export const formatDurationData = (sessions: SessionDuration) => {
     7: "D",
   };
   return sessions?.map((session: SessionDuration) => ({
-    day: daysTypes[session.day], // Convert day number to letter
+    day: daysTypes[session.day],
     sessionLength: session.sessionLength,
   }));
 };
