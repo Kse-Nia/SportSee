@@ -1,6 +1,6 @@
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 import { formatScoreData } from "../../utils/formatData.js";
-
+import type { ScoreProps } from "../../utils/types.js"; 
 const Score: React.FC<ScoreProps> = ({ score }) => {
   const data = formatScoreData(score); // Format score for the radialbar chart
 
