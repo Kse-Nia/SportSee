@@ -1,12 +1,4 @@
-interface Metric {
-  icon: string;
-  count: number;
-  type: string;
-}
-
-interface HealthMetricsProps {
-  metrics: Metric[];
-}
+import type { HealthMetricsProps } from "../../utils/types.js"; // TS Data types import
 
 const HealthMetrics: React.FC<HealthMetricsProps> = ({ metrics }) => {
   const getModifier = (type: string) => {

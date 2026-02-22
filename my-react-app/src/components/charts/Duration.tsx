@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   Rectangle,
 } from "recharts";
-
+import type { DurationProps } from "../../utils/types.js"; // TS Data types import
 /* interface DurationProps {
   sessionDuration: {
     day: string;
@@ -31,11 +31,7 @@ const CustomCursor = ({ points, width, height }: any) => {
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
-    return (
-      <div className="duration__tooltip">
-        {`${payload[0].value} min`}
-      </div>
-    );
+    return <div className="duration__tooltip">{`${payload[0].value} min`}</div>;
   }
   return null;
 };
@@ -43,9 +39,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
   return (
     <div className="duration">
-      <div className="duration__title">
-        Durée moyenne des sessions
-      </div>
+      <div className="duration__title">Durée moyenne des sessions</div>
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
@@ -65,14 +59,8 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
             interval="preserveStartEnd"
             padding={{ left: 10, right: 10 }}
           />
-          <YAxis
-            hide={true}
-            domain={["dataMin - 10", "dataMax + 20"]}
-          />
-          <Tooltip
-            content={<CustomTooltip />}
-            cursor={<CustomCursor />}
-          />
+          <YAxis hide={true} domain={["dataMin - 10", "dataMax + 20"]} />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
           <Line
             type="natural"
             dataKey="sessionLength"

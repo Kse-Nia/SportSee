@@ -7,17 +7,9 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { formatDailyActivityData } from "../utils/formatData";
+import { formatDailyActivityData } from "../utils/formatData.js";
 
-interface ActivitySession {
-  day: string;
-  kilogram: number;
-  calories: number;
-}
-
-interface ActivityProps {
-  dailyActivity: ActivitySession[];
-}
+import type { ActivitySession, ActivityProps } from "../utils/types.js"; // TS Data types import
 
 const CustomTooltip = ({
   active,
@@ -51,7 +43,9 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           </li>
           <li className="activity__legend-item">
             <span className="activity__legend-dot activity__legend-dot--calories" />
-            <span className="activity__legend-text">Calories brûlées (kCal)</span>
+            <span className="activity__legend-text">
+              Calories brûlées (kCal)
+            </span>
           </li>
         </ul>
       </header>
@@ -61,7 +55,7 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           <BarChart
             data={formattedData}
             barGap={8}
-            margin={{ top: 0, right: 30, left: 43, bottom: 23 }}
+            margin={{ top: 0, right: 0, left: 0, bottom: 23 }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis

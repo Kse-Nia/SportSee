@@ -15,7 +15,7 @@ const Score: React.FC<ScoreProps> = ({ score }) => {
           outerRadius="100%"
           data={data}
           startAngle={90}
-          endAngle={90 + 360 * (data[0].value / 100)}
+          endAngle={90 + 360 * ((data[0]?.value ?? 0) / 100)} // Calculate angle + handle case with TS when data is undefined
         >
           <RadialBar
             minAngle={15}
