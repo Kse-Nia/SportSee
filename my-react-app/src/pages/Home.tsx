@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react"; // Hooks
 import { useOutletContext } from "react-router"; // Access context from Layout
-import type { UserData, UserActivity } from "./../utils/types.js"; // TS types
+import type {
+  UserData,
+  UserActivity,
+  FormattedSession,
+  UserPerformance,
+} from "./../utils/types.js"; // TS types
 import { formatDurationData, checkScore } from "../utils/formatData.js"; // Format data
 import { fetchData } from "../utils/fetch.js"; // Fetching function
 const userUrl = import.meta.env.VITE_USER_URL; // .env import
@@ -27,9 +32,11 @@ export default function Home() {
   const { useMock } = useOutletContext<OutletContext>(); // Mock state from Layout context
   const [userData, setUserData] = useState<UserData | null>(null); // User data for welcome and health metrics
   const [userActivity, setUserActivity] = useState<UserActivity | null>(null); // Activity data for DailyActivity component
-  const [userSessions, setUserSessions] = useState<Session[] | null>(null); // Formatted session data for Duration graph
+  const [userSessions, setUserSessions] = useState<FormattedSession[] | null>(
+    null
+  ); // Session duration data for Duration component
   const [userPerformance, setUserPerformance] =
-    useState<UserPerformance | null>(null);
+    useState<UserPerformance | null>(null); // Performance data for PerformanceGraphe component
   const [error, setError] = useState<string | null>(null); // Error state for fetch issues
 
   useEffect(() => {
