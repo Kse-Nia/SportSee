@@ -1,39 +1,29 @@
-import mockupData from "../data/mockup.json" with { type: "json" };
+import mockupData from "../data/mockup.json"; // Import JSON data
 
-export async function fetchData(url: string) {
-  try {
-    // Fetching from backend
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log("Backend is running", data);
-    return data;
-  } catch (err) {
-    console.warn(err);
-    // Switch, running JSON if  backend is unavailable
-    try {
-      console.log("Local JSON data"); // check data 
+export async function fetchData(url: string, useMock: boolean = false) {
+  if (useMock) {
+    const urlParts = url.split("/");
+    const userIdIndex = urlParts.indexOf("user") + 1;
+    const userId = parseInt(urlParts[userIdIndex]);
 
-      const urlParts = url.split("/"); // split URL to get user ID
-      const userIdIndex = urlParts.indexOf("user") + 1;
-      const userId = parseInt(urlParts[userIdIndex]);
+    const user = Array.isArray(mockupData)
+      ? mockupData.find((u) => u.id === userId)
+      : mockupData;
 
-      // Searching user
-      const user = Array.isArray(mockupData)
-        ? mockupData.find((u: any) => u.id === userId)
-        : mockupData;
-
-      if (user) {
-        return { data: user };
-      } else {
-        console.error("Cannot find user");
-        return null;
-      }
-    } catch (error) {
-      console.error("Error, cannot get data :", error);
+    if (!user) {
+      console.error(`Utilisateur ${userId} introuvable dans les mocks`);
       return null;
     }
+
+    // Determine which data to return based on URL
+    if (url.includes("/performance")) return { data: user.performance };
+    if (url.includes("/average-sessions"))
+      return { data: user.averageSessions };
+    if (url.includes("/activity")) return { data: user.activity };
+    return { data: user };
   }
+
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+  return await response.json();
 }
