@@ -7,10 +7,11 @@ html {
 }
 
 #root {
+  width: 100%;
+  max-width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
 }
 
 body {
@@ -21,22 +22,17 @@ body {
   display: flex;
   flex-direction: column;
   font-family: Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
 main {
   width: 100%;
-  padding: 3rem;
   display: flex;
   flex-direction: column;
   flex: 1;
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  main {
-    padding: 1rem;
-  }
-}
 ul,
 li {
   text-decoration: none;
@@ -59,12 +55,14 @@ li {
 /* =========================  ORGANIZE SIDE, NAV and MAIN ========================= */
 .app__container {
   display: flex;
+  flex: 1;
   width: 100%;
-  height: 100%;
+  min-height: 0;
 }
 .app__container-main {
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
 }
 .app__container_userActivity {
   max-width: 60%;
@@ -271,6 +269,8 @@ li {
 /* =========================  DASHBOARD ========================= */
 .dashboard {
   width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
   height: 100%;
 }
 .dashboard__welcome {
@@ -288,10 +288,15 @@ li {
   gap: 30px;
 }
 .dashboard__graphs {
+  /*    display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%; */
   display: flex;
   flex-direction: row;
   gap: 30px;
   width: 100%;
+  min-width: 0;
 }
 .dashboard__health-metrics {
   width: 258px;
@@ -369,8 +374,12 @@ li {
 
 /* =========================  SCORE / RADIAL BAR ========================= */
 .radial-chart {
-  width: 258px;
-  height: 263px;
+  /*  width: 258px;
+  height: 263px; */
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: clamp(200px, 20vw, 260px);
   background: #fbfbfb;
   border-radius: 5px;
   display: flex;
@@ -400,8 +409,12 @@ li {
 
 /* =========================  PERFORMANCE / RADAR CHART ========================= */
 .performances_container {
-  width: 258px;
-  height: 263px;
+  /*   width: 258px;
+  height: 263px; */
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: clamp(200px, 20vw, 260px);
   background-color: #282d30;
   border-radius: 5px;
   display: flex;
@@ -411,8 +424,12 @@ li {
 
 /* =========================  DURATION / LINE CHART ========================= */
 .duration {
-  width: 258px;
-  height: 263px;
+  /*   width: 258px;
+  height: 263px; */
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: clamp(200px, 20vw, 260px);
   border-radius: 5px;
   background: #ff0101;
   display: flex;

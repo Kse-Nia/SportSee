@@ -2,10 +2,9 @@
 @use "_global";
 //@import "./responsive";
 
-
 /* =========================  ERROR PAGE  ========================= */
 
-.home-error{
+.home-error {
   width: 100%;
   height: auto;
   display: flex;
@@ -17,16 +16,17 @@
   font-weight: variables.$font-weight;
 }
 
-
 /* =========================  ORGANIZE SIDE, NAV and MAIN ========================= */
 
 .app__container {
   display: flex;
+  flex: 1;
   width: 100%;
-  height: 100%;
+  min-height: 0;
   &-main {
-    width: 100%;
-    height: 100%;
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
   }
   &_userActivity {
     max-width: 60%;
@@ -81,7 +81,8 @@
 
     &:hover {
       color: variables.$primary;
-      background: linear-gradient(currentColor 0 0) bottom / var(--d, 0) 3px no-repeat;
+      background: linear-gradient(currentColor 0 0) bottom / var(--d, 0) 3px
+        no-repeat;
       transition: 0.3s;
       --d: 100%;
     }
@@ -137,7 +138,6 @@
 }
 .toggle--checkbox:checked + .toggle--label {
   background-color: variables.$background;
-  
 }
 .toggle--checkbox:checked + .toggle--label::after {
   transform: translateX(24px);
@@ -163,7 +163,6 @@
 .sidebar {
   width: 117px;
   height: 100%;
-  //min-height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -245,6 +244,8 @@
 
 .dashboard {
   width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
   height: 100%;
   &__welcome {
     margin-bottom: 40px;
@@ -252,7 +253,6 @@
   &__content {
     display: flex;
     flex-direction: row;
-    //gap: 30px;
     width: 100%;
   }
   &__activity {
@@ -262,10 +262,15 @@
     gap: 30px;
   }
   &__graphs {
+    /*    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%; */
     display: flex;
     flex-direction: row;
     gap: 30px;
     width: 100%;
+    min-width: 0;
   }
   &__health-metrics {
     width: 258px;
@@ -282,7 +287,6 @@
   background: #fbfbfb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: variables.$radius-small;
-  //padding: 24px 26px 23px 32px;
   display: flex;
   flex-direction: column;
   &__header {
@@ -347,8 +351,14 @@
 /* =========================  SCORE / RADIAL BAR ========================= */
 
 .radial-chart {
-  width: 258px;
-  height: 263px;
+  /*  width: 258px;
+  height: 263px; */
+
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: clamp(200px, 20vw, 260px);
+
   background: #fbfbfb;
   border-radius: variables.$radius-small;
   display: flex;
@@ -382,8 +392,13 @@
 /* =========================  PERFORMANCE / RADAR CHART ========================= */
 
 .performances_container {
-  width: 258px;
-  height: 263px;
+  /*   width: 258px;
+  height: 263px; */
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: clamp(200px, 20vw, 260px);
+
   background-color: #282d30;
   border-radius: variables.$radius-small;
   display: flex;
@@ -393,8 +408,13 @@
 
 /* =========================  DURATION / LINE CHART ========================= */
 .duration {
-  width: 258px;
-  height: 263px;
+  /*   width: 258px;
+  height: 263px; */
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: clamp(200px, 20vw, 260px);
+
   border-radius: variables.$radius-small;
   background: variables.$primary;
   display: flex;

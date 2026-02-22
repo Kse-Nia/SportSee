@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"; // Hooks
 import { useOutletContext } from "react-router"; // Access context from Layout
 import type { UserData, UserActivity } from "./../utils/types.js"; // TS types
+import { formatDurationData, checkScore } from "../utils/formatData.js"; // Format data
 import { fetchData } from "../utils/fetch.js"; // Fetching function
 const userUrl = import.meta.env.VITE_USER_URL; // .env import
 
@@ -11,8 +12,6 @@ import DailyActivity from "../components/DailyActivity.js"; // Daily activity co
 import Score from "../components/charts/Score.js"; // Score component
 import PerformanceGraphe from "../components/charts/Performance.js"; // Radar graph component
 import Duration from "../components/charts/Duration.js"; // Duration component
-
-import { checkScore } from "../utils/formatData.js"; // check score function
 
 // Activities Icons
 import Calories from "../assets/icons/calories.svg";
@@ -25,13 +24,13 @@ interface OutletContext {
 }
 
 export default function Home() {
-  const { useMock } = useOutletContext<OutletContext>(); // Get mock toggle from context
-  const [userData, setUserData] = useState<UserData | null>(null);
-  const [userActivity, setUserActivity] = useState<UserActivity | null>(null);
-  const [userSessions, setUserSessions] = useState<Session[] | null>(null);
+  const { useMock } = useOutletContext<OutletContext>(); // Mock state from Layout context
+  const [userData, setUserData] = useState<UserData | null>(null); // User data for welcome and health metrics
+  const [userActivity, setUserActivity] = useState<UserActivity | null>(null); // Activity data for DailyActivity component
+  const [userSessions, setUserSessions] = useState<Session[] | null>(null); // Formatted session data for Duration graph
   const [userPerformance, setUserPerformance] =
     useState<UserPerformance | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null); // Error state for fetch issues
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -46,7 +45,8 @@ export default function Home() {
 
         if (d1) setUserData(d1.data);
         if (d2) setUserActivity(d2.data);
-        if (d3) setUserSessions(d3.data.sessions);
+        if (d3?.data?.sessions)
+          setUserSessions(formatDurationData(d3.data.sessions));
         if (d4) setUserPerformance(d4.data);
       } catch (err) {
         console.error("Erreur fetch :", err);
