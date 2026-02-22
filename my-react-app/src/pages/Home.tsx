@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react"; // Hooks
-import type {
-  UserData,
-  UserActivity,
-} from "./../utils/types.js"; // TS types
+import { useOutletContext } from "react-router"; // Access context from Layout
+import type { UserData, UserActivity } from "./../utils/types.js"; // TS types
 import { fetchData } from "../utils/fetch.js"; // Fetching function
-import mockupData from "../data/mockup.json" with { type: "json" };/// JSON data instead of API
 const userUrl = import.meta.env.VITE_USER_URL; // .env import
 
 import HomeError from "../components/errors/HomeError.js";
@@ -23,48 +20,45 @@ import Protein from "../assets/icons/protein.svg";
 import Carbs from "../assets/icons/carbs.svg";
 import Fat from "../assets/icons/fat.svg";
 
+interface OutletContext {
+  useMock: boolean;
+}
 
 export default function Home() {
-  const [userData, setUserData] = useState<UserData | null>(null); // User data
-  const [userActivity, setUserActivity] = useState<UserActivity | null>(null); // User activity
-  const [userSessions, setUserSessions] = useState<Session[] | null>(null); // User sessions
+  const { useMock } = useOutletContext<OutletContext>(); // Get mock toggle from context
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userActivity, setUserActivity] = useState<UserActivity | null>(null);
+  const [userSessions, setUserSessions] = useState<Session[] | null>(null);
   const [userPerformance, setUserPerformance] =
-    useState<UserPerformance | null>(null); // User performance
+    useState<UserPerformance | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const findScore = checkScore(userData); // Get the right score
-
-  // Hook to fetch data API
   useEffect(() => {
     const fetchAllData = async () => {
+      setError(null);
       try {
-        const fetchUserData = await fetchData(`${userUrl}/12`, mockupData);
-        const fetchUserActivity = await fetchData(
-          `${userUrl}/12/activity`,
-          mockupData
-        );
-        const fetchUserSessions = await fetchData(
-          `${userUrl}/12/average-sessions`,
-          mockupData
-        );
-        const fetchUserPerformance = await fetchData(
-          `${userUrl}/12/performance`,
-          mockupData
-        );
+        const [d1, d2, d3, d4] = await Promise.all([
+          fetchData(`${userUrl}/12`, useMock),
+          fetchData(`${userUrl}/12/activity`, useMock),
+          fetchData(`${userUrl}/12/average-sessions`, useMock),
+          fetchData(`${userUrl}/12/performance`, useMock),
+        ]);
 
-        if (fetchUserData) setUserData(fetchUserData.data);
-        if (fetchUserActivity) setUserActivity(fetchUserActivity.data);
-        if (fetchUserSessions) setUserSessions(fetchUserSessions.data.sessions);
-        if (fetchUserPerformance) setUserPerformance(fetchUserPerformance.data);
-
+        if (d1) setUserData(d1.data);
+        if (d2) setUserActivity(d2.data);
+        if (d3) setUserSessions(d3.data.sessions);
+        if (d4) setUserPerformance(d4.data);
       } catch (err) {
-        console.log("Error, impossible de récupérer la data : ", err);
-        return <HomeError />;
+        console.error("Erreur fetch :", err);
+        setError("Impossible de récupérer les données.");
       }
     };
-    fetchAllData();
-  }, []);
 
-  // Metrics data for the HealthMetrics component
+    fetchAllData();
+  }, [useMock]);
+
+  const findScore = checkScore(userData);
+
   const metrics = userData
     ? [
         {
@@ -82,39 +76,34 @@ export default function Home() {
           count: userData.keyData.carbohydrateCount,
           type: "Glucides",
         },
-        {
-          icon: Fat,
-          count: userData.keyData.lipidCount,
-          type: "Lipides",
-        },
+        { icon: Fat, count: userData.keyData.lipidCount, type: "Lipides" },
       ]
     : [];
+  if (error) return <HomeError />;
 
-    return (
-      <main className="dashboard">
-        <div className="dashboard__welcome">
-          {userData && <UserWelcome userInfos={userData.userInfos} />}
+  return (
+    <main className="dashboard">
+      <div className="dashboard__welcome">
+        {userData && <UserWelcome userInfos={userData.userInfos} />}
+      </div>
+
+      <div className="dashboard__content">
+        <div className="dashboard__activity">
+          {userActivity && (
+            <>
+              <DailyActivity dailyActivity={userActivity.sessions} />
+              <div className="dashboard__graphs">
+                <Duration sessionDuration={userSessions} />
+                <PerformanceGraphe performances={userPerformance} />
+                <Score score={findScore} />
+              </div>
+            </>
+          )}
         </div>
-        
-        <div className="dashboard__content">
-          <div className="dashboard__activity">
-            {userActivity && (
-              <>
-                <DailyActivity dailyActivity={userActivity.sessions} />
-                
-                <div className="dashboard__graphs">
-                  <Duration sessionDuration={userSessions} />
-                  <PerformanceGraphe performances={userPerformance} />
-                  <Score score={findScore} />
-                </div>
-              </>
-            )}
-          </div>
-          
-          <div className="dashboard__health-metrics">
-            {userData && <HealthMetrics metrics={metrics} />}
-          </div>
+        <div className="dashboard__health-metrics">
+          {userData && <HealthMetrics metrics={metrics} />}
         </div>
-      </main>
-    );
-  }    
+      </div>
+    </main>
+  );
+}
