@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react"; // Hooks
+import type {
+  UserData,
+  UserActivity,
+} from "./../utils/types.js"; // TS types
 import { fetchData } from "../utils/fetch.js"; // Fetching function
 import mockupData from "../data/mockup.json" with { type: "json" };/// JSON data instead of API
 const userUrl = import.meta.env.VITE_USER_URL; // .env import
@@ -19,40 +23,6 @@ import Protein from "../assets/icons/protein.svg";
 import Carbs from "../assets/icons/carbs.svg";
 import Fat from "../assets/icons/fat.svg";
 
-interface UserData {
-  userInfos: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    age: number;
-  };
-  todayScore: number;
-  keyData: {
-    calorieCount: number;
-    proteinCount: number;
-    carbohydrateCount: number;
-    lipidCount: number;
-  };
-}
-interface UserActivity {
-  id: number;
-  sessions: Session[];
-}
-
-interface Session {
-  day: string;
-  sessionsWeight: number;
-  calories: number;
-}
-
-interface UserPerformance {
-  id: number;
-  kind: string;
-  data: {
-    value: number;
-    kind: string;
-  };
-}
 
 export default function Home() {
   const [userData, setUserData] = useState<UserData | null>(null); // User data
@@ -86,8 +56,6 @@ export default function Home() {
         if (fetchUserSessions) setUserSessions(fetchUserSessions.data.sessions);
         if (fetchUserPerformance) setUserPerformance(fetchUserPerformance.data);
 
-        console.log(mockupData, "Data mockup !");
-        console.log("User Data:", fetchUserData);
       } catch (err) {
         console.log("Error, impossible de récupérer la data : ", err);
         return <HomeError />;
