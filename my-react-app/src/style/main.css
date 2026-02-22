@@ -43,6 +43,19 @@ li {
   list-style: none;
 }
 
+/* =========================  ERROR PAGE  ========================= */
+.home-error {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  color: #020203;
+  font-size: 18px;
+  font-weight: 500;
+}
+
 /* =========================  ORGANIZE SIDE, NAV and MAIN ========================= */
 .app__container {
   display: flex;
@@ -78,6 +91,7 @@ li {
 }
 .navbar__logo {
   margin: 1rem 2rem 1rem 0;
+  flex-shrink: 0;
 }
 .navbar__logo img {
   width: 177px;
@@ -85,10 +99,11 @@ li {
 }
 .navbar__links {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 48px;
   list-style: none;
-  width: 100%;
+  flex: 1;
   margin: 0;
   padding: 0;
 }
@@ -99,15 +114,82 @@ li {
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   transition: color 0.2s;
-  background-size: 0 3px;
-  background-position: bottom center;
 }
 .navbar__link:hover {
   color: #ff0101;
-  background-size: 100% 3px;
   background: linear-gradient(currentColor 0 0) bottom/var(--d, 0) 3px no-repeat;
   transition: 0.3s;
   --d: 100%;
+}
+.navbar__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.navbar__toggle-label {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  white-space: nowrap;
+}
+
+/* =========================  TOGGLE SWICTH DATA NAVBAR ========================= */
+.toggle--checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.toggle--label {
+  display: inline-flex;
+  align-items: center;
+  width: 50px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  position: relative;
+  transition: background-color 0.25s ease;
+  cursor: pointer;
+}
+
+.toggle--label::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: #74798C;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease;
+}
+
+.toggle--checkbox:checked + .toggle--label {
+  background-color: #ffffff;
+}
+
+.toggle--checkbox:checked + .toggle--label::after {
+  transform: translateX(24px);
+}
+
+.toggle--checkbox:focus-visible + .toggle--label {
+  outline: 2px solid #ff0101;
+  outline-offset: 2px;
+}
+
+.screen-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* =========================  SIDEBAR ========================= */

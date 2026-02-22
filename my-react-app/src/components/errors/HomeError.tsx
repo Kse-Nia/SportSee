@@ -5,7 +5,7 @@ const HomeError: React.FC = () => {
       <p className="home-error__message">
         Une erreur est survenue lors du chargement des données ou de la page.
       </p>
-      <p> Veuillez réessayer plus tard.</p>
+      <p> Veuillez réessayer plus tard...</p>
     </div>
   );
 };

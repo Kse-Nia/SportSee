@@ -1,6 +1,13 @@
-import { Link, NavLink } from "react-router-dom";
+// components/Navbar/Navbar.tsx
+import { NavLink } from "react-router-dom";
+import ToggleDataSwitch from "../Button/ToggleDataSwitch.js";
 
-export default function Navbar() {
+interface NavbarProps {
+  useMock: boolean;
+  onToggle: () => void;
+}
+
+export default function Navbar({ useMock, onToggle }: NavbarProps) {
   return (
     <header className="header">
       <nav className="navbar">
@@ -29,6 +36,16 @@ export default function Navbar() {
             </NavLink>
           </li>
         </ul>
+        <div className="navbar__toggle">
+          <span className="navbar__toggle-label">
+            {useMock ? "MockUp" : "API"}
+          </span>
+          <ToggleDataSwitch
+            checked={useMock}
+            onChange={onToggle}
+            label="Basculer entre Backend Server et mockup local"
+          />
+        </div>
       </nav>
     </header>
   );

@@ -2,6 +2,22 @@
 @use "_global";
 //@import "./responsive";
 
+
+/* =========================  ERROR PAGE  ========================= */
+
+.home-error{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: variables.$background;
+  color: variables.$dark-background;
+  font-size: variables.$font-size;
+  font-weight: variables.$font-weight;
+}
+
+
 /* =========================  ORGANIZE SIDE, NAV and MAIN ========================= */
 
 .app__container {
@@ -36,22 +52,21 @@
   align-items: center;
   padding: 0 29px;
   justify-content: space-between;
-
   &__logo {
-    // margin-right: 2rem;
     margin: 1rem 2rem 1rem 0;
+    flex-shrink: 0;
     img {
       width: 177px;
       display: block;
     }
   }
-
   &__links {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 48px;
     list-style: none;
-    width: 100%;
+    flex: 1;
     margin: 0;
     padding: 0;
   }
@@ -63,22 +78,87 @@
     font-weight: variables.$font-weight;
     font-family: variables.$font-family;
     transition: color 0.2s;
-    background-size: 0 3px; // Underline size for animation
-    background-position: bottom center; // Center bottom underline
 
-    // Hover effect
     &:hover {
-      color: variables.$primary; // color
-      // Soulignement animé
-      background-size: 100% 3px;
-      background: linear-gradient(currentColor 0 0) bottom / var(--d, 0) 3px
-        no-repeat; // No underline by default
-      transition: 0.3s; // Animation duration
-      --d: 100%; // Full underline on animation
+      color: variables.$primary;
+      background: linear-gradient(currentColor 0 0) bottom / var(--d, 0) 3px no-repeat;
+      transition: 0.3s;
+      --d: 100%;
     }
+  }
+
+  // Toggle switch container
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__toggle-label {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: variables.$font-family;
+    white-space: nowrap;
   }
 }
 
+/* =========================  TOGGLE SWICTH DATA NAVBAR ========================= */
+.toggle--checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.toggle--label {
+  display: inline-flex;
+  align-items: center;
+  width: 50px;
+  height: 25px;
+  background-color: variables.$background;
+  border-radius: 14px;
+  position: relative;
+  transition: background-color 0.25s ease;
+  cursor: pointer;
+}
+
+.toggle--label::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: variables.$secondary-text;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease;
+}
+.toggle--checkbox:checked + .toggle--label {
+  background-color: variables.$background;
+  
+}
+.toggle--checkbox:checked + .toggle--label::after {
+  transform: translateX(24px);
+}
+.toggle--checkbox:focus-visible + .toggle--label {
+  outline: 2px solid variables.$primary;
+  outline-offset: 2px;
+}
+
+// Accessibility class to hide elements visually / keep them accessible  screenreaders
+.screen-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 /* =========================  SIDEBAR ========================= */
 .sidebar {
   width: 117px;
