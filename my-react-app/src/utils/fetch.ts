@@ -27,6 +27,8 @@ export async function fetchData(url: string, useMock: boolean = false) {
   }
 
   const response = await fetch(url);
+
+  // Error handling for HTTP res
   if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
   return await response.json();
 }

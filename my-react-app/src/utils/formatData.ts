@@ -7,6 +7,8 @@ import type {
 } from "./types.js"; // TS Data types import
 
 /* ========================= FORMAT DAILY ACTIVITY DATA  ========================= */
+
+// Add index to Activity Data for labeling
 export const formatDailyActivityData = (
   dailyActivity: ActivitySession[]
 ): (ActivitySession & { index: number })[] => {
@@ -19,6 +21,8 @@ export const formatDailyActivityData = (
 };
 
 /* ========================= FORMAT PERFORMANCES DATA  ========================= */
+
+// Translate and reorder performance data
 export const formatPerformancesData = (performances: UserPerformance) => {
   // Translate kinds data
   const kindTranslation: Record<number, string> = {
@@ -30,6 +34,7 @@ export const formatPerformancesData = (performances: UserPerformance) => {
     6: "Intensité",
   };
 
+  // Map performance data to translated kinds
   const mapped = performances.data.map((item) => ({
     kind: kindTranslation[item.kind],
     value: item.value,
@@ -66,29 +71,14 @@ export const checkScore = (userData: UserData | null): number | undefined => {
 };
 
 /* =========================  FORMAT SESSION DURATION DATA  ========================= */
-/* export const formatDurationData = (sessions: SessionDuration[]) => {
-  // Translate day numbers to letters
-  const daysTypes: { [key: number]: string } = {
-    1: "L",
-    2: "M",
-    3: "M",
-    4: "J",
-    5: "V",
-    6: "S",
-    7: "D",
-  };
-  return sessions?.map((session: SessionDuration) => ({
-    day: daysTypes[session.day],
-    sessionLength: session.sessionLength,
-  }));
-};
- */
 
+// Translate day numbers to letters
 export const formatDurationData = (
   sessions: SessionDuration[]
 ): FormattedSession[] => {
   const days = ["", "L", "M", "M", "J", "V", "S", "D"];
 
+  // Map session data to include translated days
   return sessions.map((session) => ({
     day: days[session.day] ?? "",
     sessionLength: session.sessionLength,
