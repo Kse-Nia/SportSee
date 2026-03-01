@@ -27,8 +27,8 @@ const CustomTooltip = ({
   if (active && payload && payload.length >= 2) {
     return (
       <div className="activity__tooltip">
-        <p className="activity__tooltip-value">{payload[0]?.value}kg</p> // Optional chaining to handle undefined values
-        <p className="activity__tooltip-value">{payload[1]?.value}Kcal</p> // Optional chaining to handle undefined values
+        <p className="activity__tooltip-value">{payload[0]?.value}kg</p>
+        <p className="activity__tooltip-value">{payload[1]?.value}Kcal</p>
       </div>
     );
   }
