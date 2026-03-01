@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  min-width: 1024px;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -63,6 +64,7 @@ li {
   flex: 1;
   min-width: 0;
   overflow-y: auto;
+  overflow-x: auto;
 }
 .app__container_userActivity {
   max-width: 60%;
@@ -269,41 +271,53 @@ li {
 /* =========================  DASHBOARD ========================= */
 .dashboard {
   width: 100%;
-  padding: 30px;
-  box-sizing: border-box;
   height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: hidden;
 }
 .dashboard__welcome {
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 .dashboard__content {
   display: flex;
   flex-direction: row;
   width: 100%;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
 }
 .dashboard__activity {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 .dashboard__graphs {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 10px;
   width: 100%;
   min-width: 0;
+  flex: 1;
+  min-height: 0;
 }
 .dashboard__health-metrics {
-  width: 258px;
+  width: 220px;
   flex-shrink: 0;
 }
 
 /* =========================  DAILY ACTIVITY ========================= */
 .activity {
   width: 100%;
-  max-width: 700px;
+  min-height: 200px;
+  flex: 1;
   height: 320px;
+  padding: 24px;
   background: #fbfbfb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 5px;
@@ -368,12 +382,45 @@ li {
   margin: 4px 0;
 }
 
+/* =========================  DURATION / LINE CHART ========================= */
+.duration {
+  min-width: 0;
+  max-height: 100%;
+  border-radius: 5px;
+  background: #ff0101;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+}
+.duration__title {
+  position: absolute;
+  top: 10%;
+  left: 13%;
+  z-index: 10;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  max-width: 140px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.duration__tooltip {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
 /* =========================  SCORE / RADIAL BAR ========================= */
 .radial-chart {
   flex: 1;
   min-width: 0;
-  width: auto;
-  height: clamp(200px, 20vw, 260px);
+  max-height: 100%;
+  aspect-ratio: 1/1;
   background: #fbfbfb;
   border-radius: 5px;
   display: flex;
@@ -381,6 +428,7 @@ li {
   position: relative;
   padding: 24px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .radial-chart__title {
   font-size: 15px;
@@ -392,11 +440,11 @@ li {
 .radial-chart__label {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: clamp(16px, 1.5vw, 26px);
   fill: #282d30;
 }
 .radial-chart__label-text {
-  font-size: 16px;
+  font-size: clamp(12px, 1vw, 16px);
   fill: #74798c;
   font-weight: 500;
 }
@@ -405,48 +453,14 @@ li {
 .performances_container {
   flex: 1;
   min-width: 0;
-  width: auto;
-  height: clamp(200px, 20vw, 260px);
+  max-height: 100%;
+  aspect-ratio: 1/1;
   background-color: #282d30;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* =========================  DURATION / LINE CHART ========================= */
-.duration {
-  /*   width: 258px;
-  height: 263px; */
-  flex: 1;
-  min-width: 0;
-  width: auto;
-  height: clamp(200px, 20vw, 260px);
-  border-radius: 5px;
-  background: #ff0101;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
-  position: relative;
-  font-family: "Roboto", sans-serif;
-}
-.duration__title {
-  position: absolute;
-  top: 29px;
-  left: 34px;
-  z-index: 10;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 24px;
-  max-width: 140px;
-  color: rgba(255, 255, 255, 0.5);
-}
-.duration__tooltip {
-  background-color: #ffffff;
-  padding: 10px;
-  color: #000000;
-  font-size: 12px;
-  font-weight: 500;
 }
 
 /* =========================  METRIC ACTIVITY ========================= */
@@ -457,7 +471,7 @@ li {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 .healthMetrics__card {
   width: 258px;
