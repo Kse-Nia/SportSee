@@ -9,20 +9,26 @@ import {
 } from "recharts";
 import { formatDailyActivityData } from "../utils/formatData.js";
 
-import type { ActivitySession, ActivityProps } from "../utils/types.js"; // TS Data types import
+import type { ActivityProps } from '../utils/types.js'; // TS Data types import
+
+interface TooltipPayload {
+  name: string;
+  value: number;
+  unit: string;
+}
 
 const CustomTooltip = ({
   active,
   payload,
 }: {
   active?: boolean;
-  payload?: any[];
+  payload?: TooltipPayload[];
 }) => {
-  if (active && payload && payload.length) {
+  if (active && payload && payload.length >= 2) {
     return (
       <div className="activity__tooltip">
-        <p className="activity__tooltip-value">{payload[0].value}kg</p>
-        <p className="activity__tooltip-value">{payload[1].value}Kcal</p>
+        <p className="activity__tooltip-value">{payload[0]?.value}kg</p> // Optional chaining to handle undefined values
+        <p className="activity__tooltip-value">{payload[1]?.value}Kcal</p> // Optional chaining to handle undefined values
       </div>
     );
   }
@@ -55,7 +61,7 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
           <BarChart
             data={formattedData}
             barGap={8}
-            margin={{ top: 0, right: 0, left: 0, bottom: 23 }}
+            margin={{ top: 24, right: 30, left: 24, bottom: 23 }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
@@ -63,6 +69,7 @@ const DailyActivity: React.FC<ActivityProps> = ({ dailyActivity }) => {
               tickLine={false}
               axisLine={{ stroke: "#DEDEDE" }}
               tick={{ fill: "#9B9EAC", fontSize: 14 }}
+              padding={{ left: 5, right: 5 }}
               dy={16}
             />
             <YAxis

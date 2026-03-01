@@ -8,12 +8,6 @@ import {
   Rectangle,
 } from "recharts";
 import type { DurationProps } from "../../utils/types.js"; // TS Data types import
-/* interface DurationProps {
-  sessionDuration: {
-    day: string;
-    sessionLength: number;
-  }[];
-} */
 
 const CustomCursor = ({ points, width, height }: any) => {
   const { x } = points[0];
@@ -24,7 +18,7 @@ const CustomCursor = ({ points, width, height }: any) => {
       x={x}
       y={0}
       width={width - x}
-      height={height + 100}
+      height={500}
     />
   );
 };
@@ -43,8 +37,8 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={sessionDuration}
-          margin={{ top: 0, right: 15, left: 15, bottom: 10 }}
+          data={sessionDuration ?? []}
+          margin={{ top: 70, right: 5, left: 5, bottom: 10 }}
         >
           <XAxis
             dataKey="day"
@@ -59,7 +53,13 @@ const Duration: React.FC<DurationProps> = ({ sessionDuration }) => {
             interval="preserveStartEnd"
             padding={{ left: 10, right: 10 }}
           />
-          <YAxis hide={true} domain={["dataMin - 10", "dataMax + 20"]} />
+          <YAxis
+            hide={true}
+            domain={[
+              (dataMin: number) => dataMin - 10,
+              (dataMax: number) => dataMax + 20,
+            ]} /* domain={["dataMin - 10", "dataMax + 20"]} */
+          />
           <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
           <Line
             type="natural"

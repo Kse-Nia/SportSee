@@ -6,17 +6,11 @@ import {
   PolarAngleAxis,
 } from "recharts";
 import { formatPerformancesData } from "../../utils/formatData.js";
-
-interface RadarProps {
-  performances: {
-    data: { value: number; kind: number }[];
-    kind: Record<number, string>;
-  };
-}
+import type { RadarProps } from "../../utils/types.js";
 
 const PerformanceGraphe: React.FC<RadarProps> = ({ performances }) => {
+  if (!performances) return null; // Check if performances data is available
   const formatedPerformances = formatPerformancesData(performances);
-  console.log("performances", formatedPerformances);
 
   return (
     <div className="performances_container">
@@ -24,7 +18,7 @@ const PerformanceGraphe: React.FC<RadarProps> = ({ performances }) => {
         <RadarChart
           cx="50%"
           cy="50%"
-          outerRadius="70%"
+          outerRadius="50%"
           data={formatedPerformances}
         >
           <PolarGrid stroke="#FFFFFF" />
