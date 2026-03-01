@@ -3,48 +3,81 @@
 <img src="./frontend/public/assets/logo.svg" alt="SportSee"/>
 </div>
 
-## À propos du projet
+## About
 
-SportSee est une startup dédiée au coaching sportif.
-En pleine croissance, l’entreprise va aujourd’hui lancer une nouvelle version de la page profil de l’utilisateur.
-Cette page va notamment permettre à l’utilisateur de suivre le nombre de sessions réalisées ainsi que le nombre de calories brûlées.
+SportSee is a sports coaching startup. This project is the user profile page, 
+displaying activity tracking data through interactive charts.
 
+## Prerequisites
+
+- [Node.js] (v18 or higher)
+- Backend - [Docker]
+- npm or yarn
 
 ## Fonctionnalités Principales
 
 - Réalisation de la page profil utilisateur
 - Affichage des données de l'utilisateur (nombre de sessions, nombre de calories brûlées, temps d'activité) sous forme de graphiques
 
-## Outils utilisés
-Projet réalisé avec React et Recharts
-Docker pour le backend
+## Tech Stack
+- React 18 with TypeScript
+- Vite
+- React Router
+- Recharts
+- Sass (styling)
 
 Lien Kanban : [Kanban](
     https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)
 
 ## Les indépendances
 
-NodeJS, NextJS, Recharts
+NodeJS, React/Vite, Recharts
 
 ## Installation
 
-1. Cloner le dépôt
-   ```sh
-   git clone
-    ```
-2. Installer les dépendances
-    ```sh
-    npm install
-    ```
-3. Lancer le serveur
-    ```sh
-    npm run dev
-    ```
+### 1. Clone the repository
+```sh
+git clone https://github.com/Kse-Nia/SportSee.git
+cd sportsee
+```
 
-## Le site
+### 2. Backend setup
+```sh
+cd backend
+docker compose up -d
+```
 
-Vous pouvez également consulter le site live sur cette adresse : 
+The API will be available at `http://localhost:3000`
 
+
+### 3. Frontend setup
+```sh
+cd frontend
+npm install
+npm run dev
+```
+
+## Mock Data
+
+The app includes a mock data mode (mockup.json) that can be toggled via the switch button
+in the navbar, allowing development without running the backend.
+
+
+## Deployment
+
+The application is deployed on a self-configured VPS (Ubuntu) with a custom domain.
+
+**Live Demo:** [sportsee.your-domain.com](https://sportsee.your-domain.com)
+
+Infrastructure:
+- VPS hosted on OVH
+- Docker containerized backend
+- Custom domain with SSL
+
+## API Testing
+
+A Postman collection is available in the folder `/postman`. 
+Import the JSON file into Postman to test API endpoints.
 
 ## Contact
 [kseniyamudrakovadev@gmail.com](kseniyamudrakovadev@gmail.com)
