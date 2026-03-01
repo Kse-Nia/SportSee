@@ -1,6 +1,7 @@
 import type {
   ActivitySession,
   SessionDuration,
+  FormattedSession,
   UserData,
   UserPerformance,
 } from "./types.js"; // TS Data types import
@@ -65,7 +66,7 @@ export const checkScore = (userData: UserData | null): number | undefined => {
 };
 
 /* =========================  FORMAT SESSION DURATION DATA  ========================= */
-export const formatDurationData = (sessions: SessionDuration[]) => {
+/* export const formatDurationData = (sessions: SessionDuration[]) => {
   // Translate day numbers to letters
   const daysTypes: { [key: number]: string } = {
     1: "L",
@@ -78,6 +79,18 @@ export const formatDurationData = (sessions: SessionDuration[]) => {
   };
   return sessions?.map((session: SessionDuration) => ({
     day: daysTypes[session.day],
+    sessionLength: session.sessionLength,
+  }));
+};
+ */
+
+export const formatDurationData = (
+  sessions: SessionDuration[]
+): FormattedSession[] => {
+  const days = ["", "L", "M", "M", "J", "V", "S", "D"];
+
+  return sessions.map((session) => ({
+    day: days[session.day] ?? "",
     sessionLength: session.sessionLength,
   }));
 };

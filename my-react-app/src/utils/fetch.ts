@@ -4,7 +4,7 @@ export async function fetchData(url: string, useMock: boolean = false) {
   if (useMock) {
     const urlParts = url.split("/");
     const userIdIndex = urlParts.indexOf("user") + 1; // Get index of user ID in URL
-    const userId = parseInt(urlParts[userIdIndex]); // Extract user ID from URL
+    const userId = parseInt(urlParts[userIdIndex] ?? "0"); // Extract user ID from URL / if not found default to 0
 
     // Find User in the mockup based on user ID
     const user = Array.isArray(mockupData)
