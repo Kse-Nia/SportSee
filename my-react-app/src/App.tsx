@@ -5,10 +5,6 @@ import HomeError from "./components/errors/HomeError.js"; // Home error page for
 const userUrl = import.meta.env.VITE_USER_URL;
 
 export default function App() {
-  // Variable to store user data objects
-  const userData = {};
-  const userActivity = {};
-  const userSessions = {};
 
   return (
     <Routes>
