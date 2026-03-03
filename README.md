@@ -1,6 +1,6 @@
 # Projet SportSee
 <div align="center">
-<img src="./my-react-app/public/assets/logo.svg" alt="SportSee"/>
+![Logo](my-react-app/public/logo.svg)
 </div>
 
 ## About
