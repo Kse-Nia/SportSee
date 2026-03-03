@@ -1,6 +1,8 @@
 # Projet SportSee
 <div align="center">
-![Logo](my-react-app/public/logo.svg)
+
+![Logo](./my-react-app/public/logo.png)
+
 </div>
 
 ## About
