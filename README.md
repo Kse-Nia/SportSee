@@ -61,15 +61,22 @@ The app includes a mock data mode (mockup.json) that can be toggled via the swit
 in the navbar, allowing development without running the backend.
 
 
+## API Testing
+
+A Postman collection is available in the folder `/postman`. 
+Import the JSON file into Postman to test API endpoints.
+
 Infrastructure:
 - VPS hosted on OVH
 - Docker containerized backend
 - Custom domain
 
-## API Testing
+## Deployment and Access
 
-A Postman collection is available in the folder `/postman`. 
-Import the JSON file into Postman to test API endpoints.
+The application is deployed on a VPS hosted on OVH. 
+The backend is containerized using Docker, and the frontend is served using a custom domain.
+
+You can access the deployed application at [https://sportsee.kseniya-mudrakova.fr](https://sportsee.kseniya-mudrakova.fr).
 
 ## Contact
 [kseniyamudrakovadev@gmail.com](kseniyamudrakovadev@gmail.com)
